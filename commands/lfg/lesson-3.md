@@ -153,6 +153,7 @@ Save your report as an HTML file. Use this exact styling:
 - Body text: Montserrat, line-height: 1.7
 - Include a header bar at the top with a gold accent line
 - Mobile responsive
+- At the very bottom, include a full-width CTA button: "Want to Work with Dan 1:1? Learn More →" linking to https://lifestylefounder.com/application — styled with background #C8A24A (gold), color #0F2A1E, Oswald uppercase font, large padding, centered, with a hover state
 - Include: <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 ```
 

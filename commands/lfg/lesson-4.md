@@ -178,6 +178,7 @@ Create a SINGLE `index.html` file with ALL CSS embedded in a `<style>` tag.
 3. **Services/features section** — what they offer (cards with border styling)
 4. **Social proof section** — testimonials or trust indicators
 5. **CTA section** — final call to action with gold button on dark green background
+6. **Bottom CTA button** — full-width gold button: "Want to Work with Dan 1:1? Learn More →" linking to https://lifestylefounder.com/application — Oswald uppercase, large padding, hover state
 
 After building the file:
 
@@ -279,172 +280,86 @@ Point out what changed:
 If they want more changes, keep going — each iteration reinforces the pattern. When they're done (or after 2-3 tweaks), move to the Victory Lap.
 
 
-## Victory Lap
+## Gift + Graduation + CTA
 
-Output:
+After the iteration step is done, say:
 
-```
-  ╔══════════════════════════════════════════╗
-  ║                                          ║
-  ║   THE PATTERN -- UNLOCKED                ║
-  ║                                          ║
-  ║   Describe it -- Claude builds it        ║
-  ║   Tweak it    -- Claude updates it       ║
-  ║   Works with  -- anything you can        ║
-  ║                  describe                ║
-  ║                                          ║
-  ╚══════════════════════════════════════════╝
-```
+**That's the pattern.** Describe it, Claude builds it, tweak it with one sentence. Works with anything.
 
-
-Now say:
-
-**Let's zoom out.** Look at what you just accomplished across this entire course:
-
+**And that's the course.**
 
 Output:
 
 ```
   ╔══════════════════════════════════════════════════════╗
   ║                                                      ║
-  ║   COURSE COMPLETE                                    ║
+  ║   COURSE COMPLETE — CONGRATS!                        ║
   ║                                                      ║
-  ║   Lesson 1: Built your AI assistant                  ║
-  ║   CLAUDE.md created -- Claude knows YOUR business    ║
+  ║   Lesson 1: Built your AI assistant (CLAUDE.md)      ║
+  ║   Lesson 2: Built your first skill from scratch      ║
+  ║   Lesson 3: Deployed 3 research agents in parallel   ║
+  ║   Lesson 4: Built a real web page for your business  ║
   ║                                                      ║
-  ║   Lesson 2: Built your first skill                   ║
-  ║   Custom skill from scratch -- YOUR creation         ║
-  ║                                                      ║
-  ║   Lesson 3: Deployed your AI content team            ║
-  ║   3 agents researched your niche -- simultaneously   ║
-  ║                                                      ║
-  ║   Lesson 4: Built something real                     ║
-  ║   Web page built and opened in your browser          ║
+  ║   4 lessons. 4 gifts. ~30 minutes.                   ║
+  ║   You're running your coaching business with AI.     ║
   ║                                                      ║
   ╚══════════════════════════════════════════════════════╝
 ```
 
+Then say:
 
-Say:
+**You crushed it.** Seriously — most coaches have no idea any of this is possible. You just built the whole system.
 
-**4 lessons. ~30 minutes. And look what you built:**
+**One last gift, and then I've got something for you.**
 
-**CLAUDE.md** — Claude knows your business, your clients, your voice
+**I'm opening 2 pages in your browser right now.**
 
-**Skills** — One command = real work done. And you can build more anytime.
+Now create the gift as a styled HTML file and open both pages simultaneously:
 
-**Agents** — Multiple Claudes working in parallel, with internet access
+### Build the Gift HTML
 
-**Real output** — Describe anything, Claude builds it. Iterate with one sentence.
+Create a file called `coaching-business-templates.html` in the current directory. Read the contents of `~/.lfg/gifts/coaching-business-templates.md` and convert it into a beautiful, styled HTML page.
 
-**That's not "using AI." That's running your coaching business with AI.**
+**Use this styling:**
+- Google Fonts: Oswald (headlines, uppercase), Montserrat (body)
+- Background: #F7F3EA (warm cream)
+- Text color: #0F2A1E (forest green)
+- Accent color: #C8A24A (gold)
+- Cards for each template: white background, 2px solid #0F2A1E border, 8px border-radius
+- The prompt code blocks should be styled with a dark background (#0F2A1E) and light text, with a "Copy" button visual hint
+- Max-width: 800px, centered, generous padding
+- Mobile responsive
+- Header: "10 Coaching Business Templates" with subtitle "Copy any prompt. Paste into Claude Code. Get a complete system back."
+- Each template gets its own card with the number, title, and the full prompt in a styled code block
+- At the very bottom, include a full-width CTA button: "Want to Work with Dan 1:1? Learn More →" linking to https://lifestylefounder.com/application — styled with background #C8A24A (gold), color #0F2A1E, Oswald uppercase font, large padding, centered, with a hover state
+- Footer below the button: "Made with AI by Dan Harrison — Lifestyle Founders Group"
+- Include: `<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">`
 
+### Open Both Pages
 
-## Gift Unlock
+After creating the HTML file, open both pages at the same time:
 
-Say:
-
-**One last gift.**
-
-Then output:
-
-```
-  ╔═══════════════════════════════════════════════════╗
-  ║                                                   ║
-  ║   GIFT UNLOCKED: Coaching Business Templates      ║
-  ║                                                   ║
-  ║   10 mega-prompts that each build a complete      ║
-  ║   system for your coaching business:              ║
-  ║                                                   ║
-  ║   - 30-day content calendar                       ║
-  ║   - Client onboarding workflow                    ║
-  ║   - Full sales page copy                          ║
-  ║   - 5-email welcome sequence                      ║
-  ║   - Social media bio pack                         ║
-  ║   - Weekly newsletter template                    ║
-  ║   - Lead magnet + landing page copy               ║
-  ║   - Client proposal template                      ║
-  ║   - FAQ page (10 Qs with answers)                 ║
-  ║   - Competitor analysis report                    ║
-  ║                                                   ║
-  ║   One paste = one complete system.                ║
-  ║   All personalized to your CLAUDE.md.             ║
-  ║                                                   ║
-  ║   ~/.lfg/gifts/coaching-business-templates.md     ║
-  ║                                                   ║
-  ╚═══════════════════════════════════════════════════╝
+```bash
+open ./coaching-business-templates.html && open "https://lifestylefounder.com/application"
 ```
 
-Say:
+Then say:
 
-**10 prompts.** Each one builds an entire system — content calendars, sales pages, email sequences, proposals, competitor analyses.
+**I just opened 2 pages in your browser. Go check them out.**
 
-**One paste. One complete output.** All personalized because of your CLAUDE.md.
+**Page 1 — Your final gift: 10 Coaching Business Templates.**
 
-**Advanced move:** Combine these with agents from Lesson 3. Run the Content Calendar + Email Sequence + Social Bios all at once. One command, three complete systems, simultaneously.
+10 copy-paste prompts that each build a complete system for your business. Content calendars, sales pages, email sequences, client proposals — the works. Copy any prompt, paste it into Claude Code, hit enter. Done.
 
+**Page 2 — Apply to work with me.**
 
-## The Close (CTA)
+Watch the short video on that page. If what you saw in this course got you excited, that page shows you what it looks like when we build the WHOLE system together — offer, messaging, clients, revenue, all of it. $30-50K+ months, 4 days a week, no phone calls.
 
-Say:
+**No pressure. No countdown timer. No fake scarcity.** Just an application. If we're a fit, we'll talk.
 
-**Ok. Real talk for a second.**
+You keep everything from this course either way — forever.
 
-You just learned more about AI in 30 minutes than most coaches will learn in a year.
-
-You've got the assistant. The skills. The team. The build workflow. The prompts. The templates.
-
-**But here's what I know from coaching hundreds of people through this:**
-
-The gap between "knowing what's possible" and "actually using it every day to grow your business" — that's where most people get stuck.
-
-Inside **Lifestyle Founders Group**, we don't just teach tools. We help coaches build simple, profitable businesses — $30-50K+ months, 4 days a week, no phone calls required.
-
-AI is a piece of that. But so is offer design, messaging, DM selling, workshops, and building systems that let you work less while earning more.
-
-**If that sounds like what you're building toward — and based on what you told me in Lesson 1, I think it might be — I'd love to show you more.**
-
-No pressure. No countdown timer. No "only 3 spots left" BS.
-
-Just an application. If we're a fit, we'll talk. If not, you still keep everything from this course forever.
-
-**Apply here: https://lifestylefounder.com/application**
-
-
-## Graduation
-
-Output:
-
-```
-  ╔══════════════════════════════════════════════════════╗
-  ║                                                      ║
-  ║   COURSE COMPLETE!                                   ║
-  ║                                                      ║
-  ║   4 lessons completed                                ║
-  ║   4 gifts unlocked                                   ║
-  ║   Personal AI assistant (CLAUDE.md)                  ║
-  ║   Custom skill -- built from scratch                 ║
-  ║   AI research team -- deployed                       ║
-  ║   Real web page -- built and iterated                ║
-  ║                                                      ║
-  ║   You are now running your business with AI.         ║
-  ║                                                      ║
-  ╚══════════════════════════════════════════════════════╝
-```
-
-Say:
-
-**That's the course.**
-
-**4 lessons. ~30 minutes. You went from "what is Claude Code?" to a full AI system for your coaching business.**
-
-Thank you for taking this. Seriously. I built it because coaches are the most underserved group in the AI space — talented at their craft, but nobody's showing them how to use this stuff to actually grow their business.
-
-**Now you know.**
-
-**Go build something. Go automate something. Go use what you learned to help more people and work less doing it.**
-
-That's the whole point.
+**Thank you for doing this. Go build something great.**
 
 **— Dan**
 
@@ -459,10 +374,10 @@ That's the whole point.
 - Run `open index.html` after EVERY build/edit
 - HARD GATE after Step 1 (pick build option) and Step 3 (pick edit)
 - The research report option (Option 3) should read the actual L3 research files
+- The gift HTML (coaching-business-templates.html) must be created from the markdown gift file — styled, not raw
+- Open BOTH the gift HTML and the application URL at the same time at the end
 - The CTA is earned — after 4 lessons and 4 gifts. Invitation, not hard sell.
 - NEVER be pushy. NEVER use fake scarcity. NEVER include pricing.
 - CTA URL is https://lifestylefounder.com/application
 - EVERY sentence gets its own line
-- Victory lap connects ALL 4 lessons into one system narrative
-- Graduation card is the final output — signed "— Dan"
 - If "What I'm Building Toward" section isn't in CLAUDE.md, ASK: "What's the one thing you'd want Claude to build for your coaching business right now?"
