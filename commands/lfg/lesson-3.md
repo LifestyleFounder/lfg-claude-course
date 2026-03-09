@@ -285,9 +285,11 @@ Then output:
 
 Immediately say:
 
-**And now — the recipes.**
+**One more thing — I made you something.**
 
-5 copy-paste multi-agent workflows you can use anytime.
+You know how we just ran those agents? What if you could do that anytime — without remembering what to type?
+
+**I put together 5 ready-made workflows.** Each one is a prompt you copy, paste into Claude Code, fill in one or two blanks, and hit enter. Claude does the rest.
 
 Then output:
 
@@ -296,25 +298,57 @@ Then output:
   ║                                               ║
   ║   GIFT UNLOCKED: 5 Agent Workflows            ║
   ║                                               ║
-  ║   Copy-paste multi-agent recipes:             ║
-  ║   - Niche Deep Dive (the one you just did)    ║
-  ║   - Content Blitz (1 topic -> 3 pieces)       ║
-  ║   - Client Engagement Pack                    ║
-  ║   - Workshop Engine (plan + promo + followup) ║
-  ║   - Weekly CEO Brief (research + actions)     ║
+  ║   1. Niche Deep Dive                          ║
+  ║      (the one you just did — ready to rerun)  ║
   ║                                               ║
-  ║   ~/.lfg/gifts/5-agent-workflows-for-coaches.md ║
+  ║   2. Content Blitz                            ║
+  ║      1 topic → Instagram + Email + Video      ║
+  ║      script, all at the same time             ║
+  ║                                               ║
+  ║   3. Client Engagement Pack                   ║
+  ║      Welcome sequence + check-ins +           ║
+  ║      testimonial requests                     ║
+  ║                                               ║
+  ║   4. Workshop Engine                          ║
+  ║      Outline + promo content + follow-up      ║
+  ║      emails, all built simultaneously         ║
+  ║                                               ║
+  ║   5. Weekly CEO Brief                         ║
+  ║      Market trends + content ideas +          ║
+  ║      action plan for the week                 ║
   ║                                               ║
   ╚═══════════════════════════════════════════════╝
 ```
 
-Say:
+Then say:
 
-**5 workflows.** Niche research, content creation, client engagement, workshop planning, and your weekly CEO brief.
+**Here's exactly how to use them:**
 
-Each one spawns multiple agents that work simultaneously. **Paste the recipe, fill in the blanks, let the team work.**
+**1.** Open the file — it lives at `~/.lfg/gifts/5-agent-workflows-for-coaches.md`
 
-The Niche Deep Dive alone is worth running quarterly. Your market is always changing — your research should too.
+**2.** Pick a workflow and copy the prompt (it's in a code block — easy to grab)
+
+**3.** Paste it into Claude Code
+
+**4.** Replace the `[BRACKETS]` with your info (like your niche or topic)
+
+**5.** Hit enter — 3 agents spin up and do the work simultaneously
+
+**That's it.** Copy, paste, fill in the blanks, enter. Done.
+
+Open the file so they can see it:
+
+```bash
+open ~/.lfg/gifts/5-agent-workflows-for-coaches.md
+```
+
+Then say:
+
+**I just opened the file so you can see all 5.**
+
+The Content Blitz alone will save you hours — one topic, and you get an Instagram post, an email, and a video script. All at once.
+
+And the Niche Deep Dive? Run that quarterly. Your market changes — your research should too.
 
 
 ## Wrap Up
