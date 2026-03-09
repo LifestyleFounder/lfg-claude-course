@@ -32,7 +32,7 @@ Read their CLAUDE.md before starting. Look for the **"What I'm Building Toward"*
 Open the video lesson:
 
 ```bash
-open "https://lifestylefounder.com/ai-course/lesson-4"
+open "https://www.skool.com/lfg/classroom/f35d1637?md=c6463502a86e4eaf954a35f09124db25"
 ```
 
 ## Introduction (say this AFTER the video opens)
@@ -166,7 +166,7 @@ Create a SINGLE `index.html` file with ALL CSS embedded in a `<style>` tag.
 - If testimonials are relevant: realistic dummy testimonials from people matching their target market
 
 **If they chose Option 3 (Research Report):**
-- Read the niche research files from Lesson 3: `./niche-research-pain-points.md`, `./niche-research-competitors.md`, `./niche-research-content-gaps.md`
+- Read the niche research files from Lesson 3: `./niche-research-pain-points.html`, `./niche-research-competitors.html`, `./niche-research-content-gaps.html`
 - Format the actual research data into a beautifully designed HTML report
 - Include all three sections with proper formatting, highlights, and takeaways
 - Add an executive summary at the top

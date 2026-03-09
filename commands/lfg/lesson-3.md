@@ -32,7 +32,7 @@ Read their CLAUDE.md before the demo. The niche research and hands-on exercise s
 Open the video lesson:
 
 ```bash
-open "https://lifestylefounder.com/ai-course/lesson-3"
+open "https://www.skool.com/lfg/classroom/f35d1637?md=be4d95b1e0254c0b9e61c74517f776fc"
 ```
 
 ## Introduction (say this AFTER the video opens)
@@ -135,30 +135,49 @@ You might see some permission pop-ups. Approve them — the agents just need per
 **Here we go.**
 
 
-Now spawn 3 agents using the Task tool. ALL IN PARALLEL. Each agent uses subagent_type "general-purpose".
+Now spawn 3 agents using the Agent tool. ALL IN PARALLEL. Each agent uses subagent_type "general-purpose".
+
+**IMPORTANT — HTML REPORT STYLING:**
+
+Every agent saves their report as an HTML file. Each report MUST use this styling so it looks professional when opened in the browser. Include this in each agent prompt:
+
+```
+Save your report as an HTML file. Use this exact styling:
+- Google Fonts: Oswald (headlines, uppercase), Montserrat (body)
+- Background: #F7F3EA (warm cream)
+- Text color: #0F2A1E (forest green)
+- Accent color: #C8A24A (gold) for highlights, borders, and key callouts
+- Cards/sections: white (#FFFFFF) background, 2px solid #0F2A1E border, 8px border-radius, subtle box-shadow
+- Max-width: 800px, centered, generous padding (40px+)
+- Headlines: Oswald, uppercase, letter-spacing: 2px
+- Body text: Montserrat, line-height: 1.7
+- Include a header bar at the top with a gold accent line
+- Mobile responsive
+- Include: <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+```
 
 **Agent 1 — Pain Points & Desires:**
-Prompt: "You are a market research analyst. Research the top pain points and desires of [THEIR IDEAL CLIENT FROM CLAUDE.MD]. Use WebSearch to find what they're searching for, complaining about, and asking about in forums, Reddit, Facebook groups, and online communities. What do they WISH existed? What keeps them up at night? What have they tried that didn't work? Write a comprehensive report with specific examples and direct quotes where possible. Save your complete findings to ./niche-research-pain-points.md with clear headers and organized sections. Do NOT use any MCP tools or external integrations. Write your complete output — not a summary."
+Prompt: "You are a market research analyst. Research the top pain points and desires of [THEIR IDEAL CLIENT FROM CLAUDE.MD]. Use WebSearch to find what they're searching for, complaining about, and asking about in forums, Reddit, and online communities. What do they WISH existed? What keeps them up at night? What have they tried that didn't work? Write a focused report — aim for 500-800 words of content. Include specific examples and direct quotes where possible, but keep it tight — quality over quantity. Save your report as a single HTML file at ./niche-research-pain-points.html. [INSERT HTML STYLING INSTRUCTIONS FROM ABOVE]. Do NOT use any MCP tools or external integrations."
 
 **Agent 2 — Competitor Landscape:**
-Prompt: "You are a competitive intelligence analyst. Research the competitor landscape in [THEIR COACHING NICHE FROM CLAUDE.MD]. Use WebSearch to find who's coaching in this space, what they charge, how they position themselves, what their unique angles are, and where they're strong or weak. Find 5-10 competitors or programs. Write a comprehensive report with specific names, pricing (if visible), positioning statements, and your analysis. Save your complete findings to ./niche-research-competitors.md with clear headers. Do NOT use any MCP tools or external integrations. Write your complete output — not a summary."
+Prompt: "You are a competitive intelligence analyst. Research the competitor landscape in [THEIR COACHING NICHE FROM CLAUDE.MD]. Use WebSearch to find who's coaching in this space, what they charge, how they position themselves, and where they're strong or weak. Find 4-5 competitors or programs. Write a focused report — aim for 500-800 words of content. Include specific names, pricing (if visible), positioning statements, and your analysis. Save your report as a single HTML file at ./niche-research-competitors.html. [INSERT HTML STYLING INSTRUCTIONS FROM ABOVE]. Do NOT use any MCP tools or external integrations."
 
 **Agent 3 — Content Gaps & Opportunities:**
-Prompt: "You are a content strategist. Research content gaps and opportunities in [THEIR COACHING NICHE FROM CLAUDE.MD]. Use WebSearch to find what content exists, what's getting engagement, what topics are underserved, what questions go unanswered, and what angles nobody is using. Look at YouTube, Instagram, TikTok, podcasts, and blogs in this space. Write a comprehensive report with specific opportunities, example topics, and recommended angles. Save your complete findings to ./niche-research-content-gaps.md with clear headers. Do NOT use any MCP tools or external integrations. Write your complete output — not a summary."
+Prompt: "You are a content strategist. Research content gaps and opportunities in [THEIR COACHING NICHE FROM CLAUDE.MD]. Use WebSearch to find what content exists, what topics are underserved, and what angles nobody is using. Look at YouTube, Instagram, and blogs in this space. Write a focused report — aim for 500-800 words of content. Include specific opportunities, example topics, and recommended angles. Save your report as a single HTML file at ./niche-research-content-gaps.html. [INSERT HTML STYLING INSTRUCTIONS FROM ABOVE]. Do NOT use any MCP tools or external integrations."
 
-After all 3 agents complete, open all 3 files:
+After all 3 agents complete, open all 3 reports in the browser:
 
 ```bash
-open ./niche-research-pain-points.md && open ./niche-research-competitors.md && open ./niche-research-content-gaps.md
+open ./niche-research-pain-points.html && open ./niche-research-competitors.html && open ./niche-research-content-gaps.html
 ```
 
 Then say:
 
-**Three agents just went online, researched your ENTIRE niche, and came back with reports.**
+**Three agents just went online, researched your ENTIRE niche, and came back with professional reports.**
 
 **At the same time.**
 
-Check your screen — you should see 3 files open.
+Check your browser — you should see 3 reports open.
 
 Agent 1 researched what your ideal clients are struggling with and searching for.
 
@@ -226,9 +245,9 @@ Spawn 3 agents via Task tool based on their choice. Use subagent_type "general-p
 **IMPORTANT RULES FOR AGENTS:**
 - ALL agents may use WebSearch and WebFetch — those are built-in tools everyone has
 - NO MCP tools, NO Apify, NO external integrations
-- Each agent prompt MUST include: "Do NOT use any MCP tools or external integrations. You may use WebSearch and WebFetch. Write your complete output — not a summary."
-- Save results to `./agent-1-[name].md`, `./agent-2-[name].md`, `./agent-3-[name].md`
-- Open all 3 files after completion
+- Each agent prompt MUST include the HTML styling instructions from the demo agents above, plus: "Do NOT use any MCP tools or external integrations. You may use WebSearch and WebFetch. Keep your report focused — 500-800 words of content. Save as a single HTML file."
+- Save results to `./agent-1-[name].html`, `./agent-2-[name].html`, `./agent-3-[name].html`
+- Open all 3 HTML files in the browser after completion
 
 After agents complete and files are saved and opened, say:
 
@@ -346,7 +365,7 @@ Do NOT invoke lesson-4. They type it themselves.
 - Use subagent_type "general-purpose" for all spawned agents
 - ALL agents may use WebSearch and WebFetch — those are built-in Claude Code tools
 - NO MCP tools, NO Apify, NO external integrations in agent prompts
-- ALWAYS save agent results to files and open them
+- ALL agent output must be saved as styled HTML files (not markdown) using the LFG brand styling and opened in the browser
 - EVERY sentence gets its own line
 - HARD GATE at Step 3 — wait for their choice before spawning agents
 - Coaching analogies: solopreneur vs team, not "API calls" or "parallel processing"
