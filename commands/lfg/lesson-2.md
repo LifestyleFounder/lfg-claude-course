@@ -139,9 +139,21 @@ Say:
 
 **Step 2 — let me show you what a skill actually looks like on the inside.**
 
-I'm gonna open up the skill file for this course's welcome page so you can see the actual file. You'll see a permission pop-up — approve it. All I'm doing is reading a text file. Totally safe.
+I'm gonna open up the skill file for this course's welcome page so you can see the actual file.
 
-Read the file `~/.claude/commands/lfg/start.md` using the Read tool. Display the FULL contents to the user.
+You'll see a permission pop-up — approve it. I'm just opening a text file. Totally safe.
+
+Open the file so they can see it in their default text editor:
+
+```bash
+open ~/.claude/commands/lfg/start.md
+```
+
+Then say:
+
+**Check your screen — I just opened the file.**
+
+Take a scroll through it. That's the ENTIRE skill for the welcome page.
 
 Then walk through it:
 
