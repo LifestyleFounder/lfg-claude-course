@@ -95,6 +95,9 @@ echo "  Downloading call-pipeline setup files..."
 dl "setup/call-pipeline/supabase-schema.sql" "$HOME/.lfg/setup/supabase-schema.sql"
 dl "setup/call-pipeline/example-config.json" "$HOME/.lfg/setup/call-pipeline-example-config.json"
 
+# Changelog (used by /lfg:update to show what's new)
+dl "CHANGELOG.md" "$HOME/.lfg/CHANGELOG.md"
+
 # Download course support files
 echo "  Downloading course support files..."
 for f in fun-facts course-guide; do
