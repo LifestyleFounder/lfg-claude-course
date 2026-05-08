@@ -1,458 +1,509 @@
-<!-- Paste this entire block into a GHL Custom HTML element. Self-contained, mobile-responsive, LFG-branded. -->
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LFG Call Pipeline — Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap');
+  /* ============================================================
+     LFG Brand — Forest / Cream / Gold
+     Cream #F7F3EA · Forest #0F2A1E · Gold #C8A24A
+     Oswald (headlines) · Montserrat (body) · Playfair (accents)
+     ============================================================ */
 
-  .lfg-brief * { box-sizing: border-box; }
-  .lfg-brief {
-    background: #F7F3EA;
-    color: #0F2A1E;
+  :root {
+    --cream: #F7F3EA;
+    --forest: #0F2A1E;
+    --gold: #C8A24A;
+    --light: #FFFFFF;
+    --muted: #6B7568;
+    --rule: #E8DCC8;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--forest);
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    padding: 48px 24px;
-    max-width: 100%;
+    font-size: 11pt;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .lfg-brief .lfg-container { max-width: 760px; margin: 0 auto; }
-  .lfg-brief h1, .lfg-brief h2, .lfg-brief h3, .lfg-brief h4 {
+
+  .page {
+    max-width: 7.5in;
+    margin: 0 auto;
+    padding: 0.75in 0.75in;
+    page-break-after: always;
+    min-height: 9.75in;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ============== TYPOGRAPHY ============== */
+
+  h1, h2, h3, h4 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: #0F2A1E;
-    margin-top: 0;
+    letter-spacing: 0.04em;
+    color: var(--forest);
+    margin: 0;
   }
-  .lfg-brief h1 {
-    font-size: 56px;
-    line-height: 1.0;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .lfg-brief h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin: 48px 0 16px;
-    border-bottom: 2px solid #0F2A1E;
-    padding-bottom: 8px;
-  }
-  .lfg-brief h3 {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 24px 0 8px;
-  }
-  .lfg-brief h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 16px 0 6px;
-    color: #C8A24A;
-    letter-spacing: 0.06em;
-  }
-  .lfg-brief p { margin: 0 0 16px; }
-  .lfg-brief .lfg-eyebrow {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 13px;
-    color: #C8A24A;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-  .lfg-brief .lfg-subhead {
+  h1 { font-size: 38pt; line-height: 1.05; font-weight: 700; }
+  h2 { font-size: 22pt; line-height: 1.15; font-weight: 600; margin: 0 0 0.4em 0; }
+  h3 { font-size: 14pt; line-height: 1.2; font-weight: 600; margin: 1.5em 0 0.4em 0; letter-spacing: 0.06em; }
+  h4 { font-size: 11pt; font-weight: 700; letter-spacing: 0.08em; color: var(--gold); margin: 0 0 0.5em 0; }
+
+  p { margin: 0 0 1em 0; }
+
+  .quote {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 22px;
-    color: #0F2A1E;
+    font-size: 14pt;
     line-height: 1.4;
-    margin: 0 0 24px;
-    max-width: 620px;
+    color: var(--forest);
+    border-left: 3px solid var(--gold);
+    padding: 0 0 0 1em;
+    margin: 1em 0;
   }
-  .lfg-brief .lfg-pullquote {
-    border-left: 4px solid #C8A24A;
-    padding: 16px 0 16px 24px;
-    margin: 32px 0;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.5;
-    color: #0F2A1E;
+
+  .accent { color: var(--gold); }
+  .small { font-size: 9pt; color: var(--muted); }
+  strong { font-weight: 600; }
+  code, pre {
+    font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+    font-size: 9.5pt;
+    color: var(--forest);
   }
-  .lfg-brief .lfg-meta {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 13px;
-    color: #0F2A1E;
-    opacity: 0.7;
-    margin-top: 32px;
-    border-top: 2px solid #0F2A1E;
-    padding-top: 16px;
-  }
-  .lfg-brief .lfg-card {
-    background: #fff;
-    border: 2px solid #0F2A1E;
-    border-radius: 4px;
-    padding: 28px;
-    margin: 24px 0;
-    box-shadow: 6px 6px 0 #0F2A1E;
-  }
-  .lfg-brief .lfg-card-gold {
-    background: #0F2A1E;
-    color: #F7F3EA;
-    border-color: #C8A24A;
-    box-shadow: 6px 6px 0 #C8A24A;
-  }
-  .lfg-brief .lfg-card-gold h2,
-  .lfg-brief .lfg-card-gold h3 { color: #F7F3EA; border-color: #C8A24A; }
-  .lfg-brief .lfg-card-gold .lfg-eyebrow { color: #C8A24A; }
-  .lfg-brief ol, .lfg-brief ul { padding-left: 22px; margin: 0 0 16px; }
-  .lfg-brief li { margin-bottom: 10px; }
-  .lfg-brief code, .lfg-brief pre {
-    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 14px;
-    background: #0F2A1E;
-    color: #F7F3EA;
-    border-radius: 4px;
-  }
-  .lfg-brief code { padding: 2px 6px; }
-  .lfg-brief pre {
-    padding: 18px 20px;
+  pre {
+    background: var(--light);
+    border: 1.5px solid var(--forest);
+    border-radius: 6px;
+    padding: 0.9em 1em;
+    margin: 0.6em 0;
+    box-shadow: 3px 3px 0 var(--forest);
     overflow-x: auto;
+    line-height: 1.5;
+  }
+  code:not(pre code) {
+    background: var(--rule);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9.5pt;
+  }
+
+  /* ============== STRUCTURAL COMPONENTS ============== */
+
+  .gold-rule {
+    height: 3px;
+    background: var(--gold);
+    margin: 0.4em 0 1.2em 0;
+    width: 60px;
+  }
+
+  .card {
+    background: var(--light);
+    border: 2px solid var(--forest);
+    border-radius: 6px;
+    padding: 1.2em 1.4em;
+    margin: 1em 0;
+    box-shadow: 4px 4px 0 var(--forest);
+  }
+
+  .callout {
+    background: var(--light);
+    border-left: 5px solid var(--gold);
+    padding: 0.9em 1.2em;
+    margin: 1em 0;
+    font-size: 10pt;
     line-height: 1.55;
-    white-space: pre-wrap;
-    word-break: break-word;
-    border: 2px solid #C8A24A;
-    margin: 16px 0;
   }
-  .lfg-brief .lfg-cta {
+  .callout strong { color: var(--forest); }
+
+  .step {
+    background: var(--light);
+    border-left: 4px solid var(--gold);
+    padding: 0.9em 1.2em;
+    margin: 1em 0;
+  }
+  .step .num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.2em;
+  }
+  .step h3 { margin-top: 0.2em; }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0.8em 0;
+  }
+  .checklist li {
+    padding: 0.4em 0 0.4em 1.8em;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li:before {
+    content: "▢";
+    color: var(--gold);
+    font-size: 14pt;
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    line-height: 1;
+  }
+
+  .tag {
     display: inline-block;
-    background: #C8A24A;
-    color: #0F2A1E;
+    background: var(--gold);
+    color: var(--forest);
     font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 18px 32px;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-top: 12px;
-    border: 2px solid #0F2A1E;
-    box-shadow: 4px 4px 0 #0F2A1E;
-  }
-  .lfg-brief .lfg-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #0F2A1E; }
-  .lfg-brief a:not(.lfg-cta) {
-    color: #C8A24A;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    font-size: 9pt;
     font-weight: 600;
-  }
-  .lfg-brief .lfg-divider {
-    height: 2px;
-    background: #0F2A1E;
-    margin: 56px 0;
-    width: 80px;
-  }
-  .lfg-brief .lfg-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 32px;
-  }
-  .lfg-brief .lfg-step-num {
-    flex: 0 0 56px;
-    height: 56px;
-    background: #0F2A1E;
-    color: #C8A24A;
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-  }
-  .lfg-brief .lfg-step-body { flex: 1; min-width: 0; }
-  .lfg-brief .lfg-step-body h3 { margin-top: 6px; }
-  .lfg-brief table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0 24px;
-    font-size: 16px;
-  }
-  .lfg-brief th, .lfg-brief td {
-    text-align: left;
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(15, 42, 30, 0.15);
-    vertical-align: top;
-  }
-  .lfg-brief th {
-    background: #0F2A1E;
-    color: #F7F3EA;
-    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .lfg-brief td:first-child { font-weight: 600; white-space: nowrap; }
-  .lfg-brief .lfg-callout {
-    background: #fff;
-    border-left: 6px solid #C8A24A;
-    padding: 16px 20px;
-    margin: 24px 0;
-    font-size: 16px;
-  }
-  .lfg-brief .lfg-callout strong { color: #0F2A1E; }
-  .lfg-brief .lfg-cmd {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    background: #C8A24A;
-    color: #0F2A1E;
+    letter-spacing: 0.1em;
     padding: 4px 10px;
     border-radius: 3px;
-    font-weight: 700;
-    font-size: 16px;
-    display: inline-block;
+    margin-bottom: 0.8em;
   }
 
-  @media (max-width: 600px) {
-    .lfg-brief { padding: 32px 16px; font-size: 16px; }
-    .lfg-brief h1 { font-size: 38px; }
-    .lfg-brief h2 { font-size: 22px; margin: 36px 0 12px; }
-    .lfg-brief h3 { font-size: 19px; }
-    .lfg-brief .lfg-subhead { font-size: 18px; }
-    .lfg-brief .lfg-card { padding: 20px; box-shadow: 4px 4px 0 #0F2A1E; }
-    .lfg-brief .lfg-card-gold { box-shadow: 4px 4px 0 #C8A24A; }
-    .lfg-brief pre { font-size: 12px; padding: 14px; }
-    .lfg-brief .lfg-cta { font-size: 16px; padding: 14px 24px; display: block; text-align: center; }
-    .lfg-brief .lfg-step-num { flex: 0 0 44px; height: 44px; font-size: 20px; }
-    .lfg-brief table { font-size: 14px; }
-    .lfg-brief th, .lfg-brief td { padding: 10px 8px; }
+  .tag.outline {
+    background: transparent;
+    color: var(--forest);
+    border: 1.5px solid var(--forest);
+  }
+
+  .cta-box {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.5em 1.6em;
+    margin: 1.5em 0;
+    text-align: center;
+  }
+  .cta-box h2 {
+    color: var(--gold);
+    font-size: 18pt;
+    margin-bottom: 0.4em;
+  }
+  .cta-box p { color: var(--cream); margin-bottom: 1.2em; }
+  .cta-box a {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    padding: 0.7em 1.6em;
+    border-radius: 3px;
+    font-size: 11pt;
+  }
+
+  /* ============== COVER PAGE ============== */
+
+  .cover {
+    background: var(--forest);
+    color: var(--cream);
+    min-height: 9.75in;
+    padding: 1in 0.75in;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover h1 { color: var(--cream); font-size: 56pt; line-height: 0.95; }
+  .cover h2 { color: var(--gold); font-size: 18pt; margin-top: 0.3em; letter-spacing: 0.08em; }
+  .cover .gold-rule { background: var(--gold); width: 100px; height: 4px; margin: 1.2em 0; }
+  .cover p { color: var(--cream); }
+  .cover .footer {
+    border-top: 1px solid var(--gold);
+    padding-top: 1em;
+    font-size: 9pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Oswald', sans-serif;
+  }
+  .cover .lead {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16pt;
+    line-height: 1.45;
+    color: var(--cream);
+    max-width: 5.5in;
+  }
+
+  /* ============== TABLE ============== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 10pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.6em 0.8em;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th {
+    background: var(--forest);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* ============== PRINT ============== */
+  @page {
+    size: letter;
+    margin: 0;
+  }
+  @media print {
+    html, body { background: var(--cream); }
+    .page, .cover { padding-top: 0.75in; padding-bottom: 0.75in; }
+    pre { box-shadow: none; }
+    .card { box-shadow: none; }
   }
 </style>
+</head>
+<body>
 
-<div class="lfg-brief">
-  <div class="lfg-container">
-
-    <!-- HERO -->
-    <div class="lfg-eyebrow">Lifestyle Founders Group · Premium Module</div>
+<!-- ============ PAGE 1 — COVER ============ -->
+<div class="cover">
+  <div>
+    <div style="font-family:'Oswald',sans-serif;letter-spacing:0.2em;font-size:10pt;color:var(--gold);text-transform:uppercase;">Lifestyle Founders Group · Premium Module</div>
+    <div class="gold-rule"></div>
     <h1>The Call<br>Pipeline</h1>
-    <p class="lfg-subhead">Turn every coaching call into captured insight, action items, and content ideas — automatically. No API keys. No extra costs. Runs entirely inside your Claude Code Max plan.</p>
-
-    <div class="lfg-pullquote">
-      Stop watching your calls again to find the one good line. Stop forgetting what you promised to send. Stop letting hour-long conversations evaporate into nothing.
+    <h2>Turn Every Coaching Call Into Captured Insight,<br>Action Items, and Content Ideas — Automatically.</h2>
+    <div style="margin-top: 2em;">
+      <p class="lead">"Stop watching your calls again to find the one good line. Stop forgetting what you promised to send. Stop letting hour-long conversations evaporate into nothing."</p>
     </div>
-
-    <div class="lfg-meta">
-      Setup Guide · 4 Steps · ~20 Minutes<br>
+  </div>
+  <div>
+    <div style="margin-bottom:1.5em;">
+      <span class="tag" style="background:var(--gold);color:var(--forest);">Setup Guide · 4 Steps · ~20 Minutes</span>
+      <span class="tag" style="background:transparent;color:var(--gold);border:1.5px solid var(--gold);margin-left:0.5em;">No API Key · Runs On Your Max Plan</span>
+    </div>
+    <div class="footer">
       Dan Harrison · 3× Skool Games Winner<br>
-      lifestylefounder.com · skool.com/lfg
+      lifestylefounder.com · skool.com/quantum100
     </div>
-
-    <div class="lfg-divider"></div>
-
-    <!-- OUTCOME -->
-    <div class="lfg-eyebrow">Outcome</div>
-    <h2>What You're Installing</h2>
-    <p>The Call Pipeline is a three-skill system that runs inside Claude Code and turns every Zoom recording into structured, searchable, actionable data — without you ever touching a transcript, and without paying a single extra penny in API costs.</p>
-
-    <h3>The Three Commands</h3>
-
-    <div class="lfg-card">
-      <span class="lfg-cmd">/process-calls</span>
-      <p style="margin-top: 14px; margin-bottom: 0;">Pulls every Zoom recording from the last 24 hours. Classifies each as coaching / sales / workshop / group. Extracts a 3-sentence summary, action items (with owners and deadlines), and content idea seeds. Writes everything to your Supabase database and creates a Notion page per call. Idempotent — safe to rerun.</p>
-    </div>
-
-    <div class="lfg-card">
-      <span class="lfg-cmd">/mine-calls</span>
-      <p style="margin-top: 14px; margin-bottom: 0;">Reads processed transcripts from Supabase. Generates 3–5 pre-written content hooks per call — in your voice — each with a format suggestion (Reel, carousel, email, workshop angle), a one-line angle, and the source quote with timestamp. Drops them into Notion as proper formatted blocks.</p>
-    </div>
-
-    <div class="lfg-card">
-      <span class="lfg-cmd">/call-digest</span>
-      <p style="margin-top: 14px; margin-bottom: 0;">End-of-day rollup. Queries every call from today. Builds a clean digest grouping action items and content ideas by call. Publishes to a "Daily Digests" Notion database and emails the digest to your inbox so you close the day knowing what came out of every conversation.</p>
-    </div>
-
-    <h3>The Data Layer</h3>
-    <table>
-      <thead>
-        <tr><th>Component</th><th>What it does</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Supabase</td><td>3 tables (<code>calls</code>, <code>call_action_items</code>, <code>call_content_ideas</code>) store every transcript, action, and hook permanently. Free tier is plenty.</td></tr>
-        <tr><td>Notion</td><td>2 databases (Calls, Daily Digests) give you the human-readable interface — searchable, filterable, share-able with your team.</td></tr>
-        <tr><td>Claude Code</td><td>Does the classification, extraction, and hook mining inside your live Claude Code session. Uses your existing Pro or Max subscription — no separate API billing, no per-call costs.</td></tr>
-      </tbody>
-    </table>
-
-    <div class="lfg-callout">
-      <strong>True cost: $0/month additional.</strong> The pipeline runs entirely inside your Claude Code subscription. Supabase + Notion are free tiers. The only paid piece is Zoom Pro+, which most coaches already have for cloud recording.
-    </div>
-
-    <div class="lfg-divider"></div>
-
-    <!-- PREREQUISITES -->
-    <div class="lfg-eyebrow">Prerequisites</div>
-    <h2>What You Need Before You Start</h2>
-    <p>Don't start the install without all of these. None of them require technical skill — but two need a couple of minutes of provisioning (Supabase project, Notion duplicate).</p>
-
-    <h3>Accounts</h3>
-    <ul>
-      <li><strong>Claude Code with Pro or Max plan</strong> — Pro ($20/mo) is fine for 1–2 calls/day. Max ($100 or $200/mo) recommended if you do 5+ calls/day or run Claude Code heavily in parallel for other work. <a href="https://claude.ai/upgrade">claude.ai/upgrade</a></li>
-      <li><strong>Zoom Pro or higher</strong> — needed for cloud recordings. Local recordings can't be pulled by the integration.</li>
-      <li><strong>Google Workspace</strong> — Gmail + Google Calendar (any tier — free Gmail works)</li>
-      <li><strong>Notion account</strong> — free tier is fine</li>
-      <li><strong>Supabase account</strong> — free tier is fine. Includes a 500MB Postgres database.</li>
-    </ul>
-
-    <div class="lfg-callout">
-      <strong>Why no API key?</strong> Earlier versions of this pipeline called the Anthropic API directly with a separate key. We've simplified it: every command now runs inside your Claude Code session via MCP, so the work is covered by your existing Pro/Max subscription. One less account to set up. No surprise bills.
-    </div>
-
-    <h3>The Free Course</h3>
-    <p>Run the free 4-lesson course first if you haven't:</p>
-    <pre>curl -sL https://raw.githubusercontent.com/LifestyleFounder/lfg-claude-course/main/install.sh | bash</pre>
-
-    <h3>The Mental Model — Two Time Investments</h3>
-    <div class="lfg-card">
-      <h4>One-time setup · ~20 minutes</h4>
-      <p style="margin-bottom: 0;">Provision Supabase, duplicate the Notion template, connect 5 MCP servers, write the config file. The 4 steps in this guide.</p>
-    </div>
-    <div class="lfg-card">
-      <h4>Per-call cost · ~30 seconds</h4>
-      <p style="margin-bottom: 0;">Type <code>/process-calls</code> after a coaching call. Claude does the rest — pulls the recording via MCP, classifies, extracts, writes to Supabase + Notion. You move on with your day.</p>
-    </div>
-
-    <p><em>If you're not willing to do the 20 minutes once, this isn't for you. If you are, you'll never lose another insight from another call.</em></p>
-
-    <div class="lfg-divider"></div>
-
-    <!-- SETUP -->
-    <div class="lfg-eyebrow">Setup</div>
-    <h2>The 4-Step Install</h2>
-    <p>Run <code>/lfg:setup-call-pipeline</code> in Claude Code and follow the prompts — the command walks you through these steps interactively. This guide is the visual reference.</p>
-
-    <div class="lfg-step">
-      <div class="lfg-step-num">01</div>
-      <div class="lfg-step-body">
-        <h3>Provision Supabase</h3>
-        <p>Sign up at <a href="https://supabase.com">supabase.com</a>. Create a new project (free tier). Wait ~2 minutes for it to provision.</p>
-        <p>Open the SQL Editor → New query. Copy the schema file:</p>
-        <pre>cat ~/.lfg/setup/supabase-schema.sql | pbcopy</pre>
-        <p>Paste into the SQL editor and click Run. You should see <em>"Success. No rows returned."</em> Verify by checking the Table Editor — three tables should now exist: <code>calls</code>, <code>call_action_items</code>, <code>call_content_ideas</code>.</p>
-      </div>
-    </div>
-
-    <div class="lfg-step">
-      <div class="lfg-step-num">02</div>
-      <div class="lfg-step-body">
-        <h3>Duplicate the Notion Template</h3>
-        <p>Open the LFG Call Pipeline template:</p>
-        <p><a href="https://www.notion.so/35a237e12a2c8196bd11e472a353b1ae"><strong>→ LFG Call Pipeline · Database Template</strong></a></p>
-        <p>In the top-right, click <strong>Duplicate</strong> → choose your workspace as the destination.</p>
-        <p>You now own a copy with two databases pre-built: <strong>Calls</strong> and <strong>Daily Digests</strong>. <strong>Don't rename properties</strong> — the skills look up columns by name, so renames break the integration.</p>
-        <p>For each database, click ⋯ → <strong>Copy link to view</strong>. Paste both links back into Claude during the setup prompt. Claude will extract the data source IDs automatically.</p>
-      </div>
-    </div>
-
-    <div class="lfg-step">
-      <div class="lfg-step-num">03</div>
-      <div class="lfg-step-body">
-        <h3>Connect the MCP Servers</h3>
-        <p>In Claude Code, open Settings → MCP Servers. You need five connected:</p>
-        <ul>
-          <li><strong>Supabase</strong> — paste the project URL + service role key from your Supabase dashboard (Settings → API)</li>
-          <li><strong>Notion</strong> — one-click OAuth</li>
-          <li><strong>Zoom</strong> — one-click OAuth (Pro+ required for cloud recordings)</li>
-          <li><strong>Google Calendar</strong> — one-click OAuth</li>
-          <li><strong>Gmail</strong> — one-click OAuth (used to send the daily digest)</li>
-        </ul>
-        <div class="lfg-callout"><strong>Heads up:</strong> If Zoom complains about permissions, the most common cause is that your Zoom plan doesn't include cloud recording. The integration only sees cloud recordings — local recordings stay on your machine and never reach Zoom's API.</div>
-      </div>
-    </div>
-
-    <div class="lfg-step">
-      <div class="lfg-step-num">04</div>
-      <div class="lfg-step-body">
-        <h3>Write the Config File</h3>
-        <p>The setup command will ask you four questions and write <code>~/.lfg/call-pipeline.json</code> with your answers:</p>
-        <ul>
-          <li><strong>Email</strong> — where the daily digest gets sent</li>
-          <li><strong>Name</strong> — used in greetings</li>
-          <li><strong>Voice description</strong> — one sentence describing how you want hooks written. <em>This is the most important answer.</em></li>
-          <li><strong>Active 1:1 client names</strong> — for auto-classifying their calls as "coaching"</li>
-        </ul>
-        <p>After the config file is written, optionally edit two prompt files to customize the AI's voice:</p>
-        <pre>open ~/.claude/skills/call-capture/references/extraction-prompt.md
-open ~/.claude/skills/mine-calls/references/hook-prompt.md</pre>
-        <p>Both files have a "Voice (CUSTOMIZE THIS)" section. The more specific you are about your voice, the better the hooks. Reference creators you sound like, banned words, hook patterns you favor.</p>
-      </div>
-    </div>
-
-    <h3>First Run</h3>
-    <p>After setup completes, run your first capture:</p>
-    <pre>/process-calls</pre>
-    <p>If you have a recent Zoom cloud recording, Claude will pull it, classify it, extract everything, and write to Supabase + Notion in about 30 seconds — all inside your Claude Code session. Open Notion to see it land.</p>
-    <p>Then run <code>/mine-calls</code> to generate content hooks from that call. And <code>/call-digest</code> at end of day to email yourself the rollup.</p>
-
-    <div class="lfg-divider"></div>
-
-    <!-- TROUBLESHOOTING -->
-    <div class="lfg-eyebrow">Troubleshooting</div>
-    <h2>Common Issues</h2>
-
-    <div class="lfg-card">
-      <h3>"No recordings found" when running /process-calls</h3>
-      <p>Three causes, in order of likelihood:</p>
-      <ol>
-        <li><strong>Recording is local, not cloud</strong> — Zoom Pro+ needed; check Settings → Recording → Cloud Recording is on</li>
-        <li><strong>Recording is still processing</strong> — Zoom takes 5–30 min after a call ends to make the recording API-accessible. Run again in 15 min.</li>
-        <li><strong>Zoom MCP scope</strong> — the integration may not have permission to read recordings. Reconnect the MCP server.</li>
-      </ol>
-    </div>
-
-    <div class="lfg-card">
-      <h3>"Config not found at ~/.lfg/call-pipeline.json"</h3>
-      <p style="margin-bottom: 0;">You skipped Step 4 or the file got deleted. Re-run <code>/lfg:setup-call-pipeline</code>.</p>
-    </div>
-
-    <div class="lfg-card">
-      <h3>Notion writes silently fail (Supabase row created, no Notion page)</h3>
-      <p style="margin-bottom: 0;">Almost always a property name mismatch. The skills look up Notion columns by name — if you renamed "Action Items" to "Actions" in your duplicated database, the write fails. Restore the original property name. (Refer to the Notion template spec in the repo.)</p>
-    </div>
-
-    <div class="lfg-card">
-      <h3>Hooks don't sound like me</h3>
-      <p style="margin-bottom: 0;">Edit the Voice section of <code>~/.claude/skills/mine-calls/references/hook-prompt.md</code>. Be specific. Mention creators you sound like. Mention words you'd never use. Run <code>/mine-calls --all</code> to re-mine all calls with the updated prompt (confirm before — deletes old ideas).</p>
-    </div>
-
-    <div class="lfg-card">
-      <h3>"You've reached your usage limit" mid-batch</h3>
-      <p style="margin-bottom: 0;">You hit your Claude Pro or Max usage cap. Two options: process calls in smaller batches (3–5 at a time), or upgrade to a higher tier. Most coaches doing 1–2 calls/day never see this on Pro. Heavy users (10+ calls/day) should be on Max ($100 or $200/mo).</p>
-    </div>
-
-    <div class="lfg-card">
-      <h3>Updating to a new pipeline version</h3>
-      <p style="margin-bottom: 0;">Run <code>/lfg:update</code>. It re-downloads the latest skill code and prompts. Your config file and customized prompt edits are preserved (the installer only seeds files that don't exist locally).</p>
-    </div>
-
-    <div class="lfg-divider"></div>
-
-    <!-- AUTOMATION HAND-OFF + CTA -->
-    <div class="lfg-card lfg-card-gold">
-      <div class="lfg-eyebrow">Done-for-you option</div>
-      <h2 style="border: none; padding: 0; margin-top: 8px;">Want me to set it up for you?</h2>
-      <p>The 4-step setup takes ~20 minutes if everything goes right. The version above is the <em>manual</em> system — you type <code>/process-calls</code> after each call and Claude does the rest.</p>
-      <p>The <em>fully-automated</em> version — Zoom recordings auto-process the moment they're ready, the digest emails itself at 5pm without you lifting a finger, scheduled hook mining runs nightly — is part of the 1:1 implementorship. We set up the cron jobs, webhooks, and voice tuning together over 30 days, and you walk away with the whole system installed and humming.</p>
-      <p>If you want it running by tomorrow without doing the setup yourself, work with me 1:1.</p>
-      <a href="https://www.skool.com/quantum100/about" class="lfg-cta">Apply to work with Dan 1:1 →</a>
-    </div>
-
-    <p style="text-align: center; font-size: 14px; margin-top: 48px; opacity: 0.75; line-height: 1.7;">
-      Questions? Find me in the LFG community — <a href="https://www.skool.com/lfg/about">skool.com/lfg</a><br>
-      Course updates ship to <a href="https://github.com/LifestyleFounder/lfg-claude-course">github.com/LifestyleFounder/lfg-claude-course</a>
-    </p>
-
   </div>
 </div>
+
+<!-- ============ PAGE 2 — WHAT YOU'LL BUILD ============ -->
+<div class="page">
+  <span class="tag outline">Page 2 · Outcome</span>
+  <h2>What You're Installing</h2>
+  <div class="gold-rule"></div>
+  <p>The Call Pipeline is a three-skill system that runs inside Claude Code and turns every Zoom recording into structured, searchable, actionable data — without you ever touching a transcript, and without paying a single extra penny in API costs.</p>
+
+  <h3>The Three Commands</h3>
+
+  <div class="card">
+    <h4>/process-calls</h4>
+    <p style="margin:0;">Pulls every Zoom recording from the last 24 hours. Classifies each as <code>Sales</code> / <code>Coaching</code> / <code>Workshop</code> / <code>Group</code> / <code>Discovery</code> / <code>Other</code>. Extracts a 3-sentence summary, action items split into yours and theirs, key quotes with timestamps, and content idea seeds. Writes everything to your Supabase database and creates a Notion page per call. Idempotent — safe to rerun.</p>
+  </div>
+
+  <div class="card">
+    <h4>/mine-calls</h4>
+    <p style="margin:0;">Reads processed transcripts from Supabase. Generates 3–5 pre-written content hooks per call — in <em>your</em> voice — each with a format suggestion (Reel, carousel, email, workshop angle), a one-line angle, and the source quote with timestamp. Drops them into Notion as proper formatted blocks.</p>
+  </div>
+
+  <div class="card">
+    <h4>/call-digest</h4>
+    <p style="margin:0;">End-of-day rollup. Queries every call from today. Builds a clean digest grouping action items and content ideas by call. Publishes to a "Daily Digests" Notion database and emails the digest to your inbox so you close the day knowing what came out of every conversation.</p>
+  </div>
+
+  <h3>The Data Layer</h3>
+
+  <table>
+    <tr>
+      <th style="width:30%;">Component</th>
+      <th>What it does</th>
+    </tr>
+    <tr>
+      <td><strong>Supabase</strong></td>
+      <td>3 tables (<code>calls</code>, <code>call_action_items</code>, <code>call_content_ideas</code>) store every transcript, action, and hook permanently. Free tier is plenty.</td>
+    </tr>
+    <tr>
+      <td><strong>Notion</strong></td>
+      <td>2 databases (<code>Calls</code>, <code>Daily Digests</code>) give you the human-readable interface — searchable, filterable, share-able with your team.</td>
+    </tr>
+    <tr>
+      <td><strong>Claude Code</strong></td>
+      <td>Does the classification, extraction, and hook mining inside your live Claude Code session. Uses your existing Pro or Max subscription — no separate API billing, no per-call costs.</td>
+    </tr>
+  </table>
+
+  <p class="small" style="margin-top:1.5em;"><strong>True cost: $0/month additional.</strong> The pipeline runs entirely inside your Claude Code subscription. Supabase + Notion are free tiers. The only paid piece is Zoom Pro+, which most coaches already have for cloud recording.</p>
+</div>
+
+<!-- ============ PAGE 3 — PREREQUISITES ============ -->
+<div class="page">
+  <span class="tag outline">Page 3 · Prerequisites</span>
+  <h2>What You Need Before You Start</h2>
+  <div class="gold-rule"></div>
+  <p>Don't start the install without all of these. None of them require technical skill — but two need a couple of minutes of provisioning (Supabase project, Notion duplicate).</p>
+
+  <h3>Accounts</h3>
+  <ul class="checklist">
+    <li><strong>Claude Code with Pro or Max plan</strong> — Pro ($20/mo) is fine for 1–2 calls/day. Max ($100 or $200/mo) recommended if you do 5+ calls/day or run Claude Code heavily for other work in parallel. (claude.ai/upgrade)</li>
+    <li><strong>Zoom Pro or higher</strong> — needed for cloud recordings. Local recordings can't be pulled by the integration.</li>
+    <li><strong>Google Workspace</strong> — Gmail + Google Calendar (any tier — free Gmail works)</li>
+    <li><strong>Notion account</strong> — free tier is fine</li>
+    <li><strong>Supabase account</strong> — free tier is fine. Includes a 500MB Postgres database.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Why no Anthropic API key?</strong> Earlier versions of this pipeline called the Anthropic API directly with a separate key. We've simplified it: every command now runs inside your Claude Code session via MCP, so the work is covered by your existing Pro/Max subscription. One less account to set up. No surprise bills.
+  </div>
+
+  <h3>The Free Course</h3>
+  <ul class="checklist">
+    <li>Run the free 4-lesson course first if you haven't:
+      <pre style="margin-top:0.6em;">curl -sL https://raw.githubusercontent.com/LifestyleFounder/lfg-claude-course/main/install.sh | bash</pre>
+    </li>
+  </ul>
+
+  <h3>The Mental Model — Two Time Investments</h3>
+
+  <div class="card">
+    <h4>One-time setup · ~20 minutes</h4>
+    <p style="margin:0;">Provision Supabase, duplicate the Notion template, connect 5 MCP servers, write the config file. The 4 steps in this guide.</p>
+  </div>
+
+  <div class="card">
+    <h4>Per-call cost · ~30 seconds</h4>
+    <p style="margin:0;">Type <code>/process-calls</code> after a coaching call. Claude does the rest — pulls the recording via MCP, classifies, extracts, writes to Supabase + Notion. You move on with your day.</p>
+  </div>
+
+  <p style="margin-top:2em;">If you're not willing to do the 20 minutes once, this isn't for you. If you are, you'll never lose another insight from another call.</p>
+</div>
+
+<!-- ============ PAGE 4 — STEPS 1-3 ============ -->
+<div class="page">
+  <span class="tag outline">Page 4 · Setup · Steps 1–3</span>
+  <h2>The 4-Step Install</h2>
+  <div class="gold-rule"></div>
+  <p>Run <code>/lfg:setup-call-pipeline</code> in Claude Code and follow the prompts — the command walks you through these steps interactively. This guide is the visual reference.</p>
+
+  <div class="step">
+    <div class="num">01</div>
+    <h3>Provision Supabase</h3>
+    <p>Sign up at <strong>supabase.com</strong>. Create a new project (free tier). Wait ~2 minutes for it to provision.</p>
+    <p>Open the SQL Editor → New query. Copy the schema file:</p>
+    <pre>cat ~/.lfg/setup/supabase-schema.sql | pbcopy</pre>
+    <p>Paste into the SQL editor and click <strong>Run</strong>. You should see "Success. No rows returned." Verify by checking the Table Editor — three tables should now exist: <code>calls</code>, <code>call_action_items</code>, <code>call_content_ideas</code>.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">02</div>
+    <h3>Duplicate the Notion Template</h3>
+    <p>Open the LFG Call Pipeline template:</p>
+    <pre style="background:var(--forest);color:var(--cream);font-size:10pt;">https://www.notion.so/35a237e12a2c8196bd11e472a353b1ae</pre>
+    <p>In the top-right of the page, click <strong>Duplicate</strong> → choose your workspace.</p>
+    <p>You now own a copy with two databases pre-built: <code>Calls</code> and <code>Daily Digests</code>. <strong>Don't rename properties</strong> — the skills look up columns by name, so renames break the integration.</p>
+    <p>For each database, click ⋯ → <strong>Copy link to view</strong>. Paste both links back into Claude during the setup prompt. Claude will extract the data source IDs automatically.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">03</div>
+    <h3>Connect the MCP Servers</h3>
+    <p>In Claude Code, open Settings → MCP Servers. You need five connected:</p>
+    <ul class="checklist">
+      <li><strong>Supabase</strong> — paste the project URL + service role key from your Supabase dashboard (Settings → API)</li>
+      <li><strong>Notion</strong> — one-click OAuth</li>
+      <li><strong>Zoom</strong> — one-click OAuth (Pro+ required for cloud recordings)</li>
+      <li><strong>Google Calendar</strong> — one-click OAuth</li>
+      <li><strong>Gmail</strong> — one-click OAuth (used to send the daily digest)</li>
+    </ul>
+    <p class="small">If Zoom complains about permissions, the most common cause is that your Zoom plan doesn't include cloud recording. The integration only sees cloud recordings — local recordings stay on your machine and never reach Zoom's API.</p>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 — STEP 4 + FIRST RUN ============ -->
+<div class="page">
+  <span class="tag outline">Page 5 · Setup · Step 4 + First Run</span>
+  <h2>Final Step</h2>
+  <div class="gold-rule"></div>
+
+  <div class="step">
+    <div class="num">04</div>
+    <h3>Write the Config File</h3>
+    <p>The setup command will ask you four questions and write <code>~/.lfg/call-pipeline.json</code> with your answers:</p>
+    <ul class="checklist">
+      <li><strong>Email</strong> — where the daily digest gets sent</li>
+      <li><strong>Name</strong> — used in greetings AND as the host name when extraction decides whose action items belong to you</li>
+      <li><strong>Voice description</strong> — one sentence describing how you want hooks written. <em>This is the most important answer.</em></li>
+      <li><strong>Active 1:1 client names</strong> — for auto-classifying their calls as <code>Coaching</code></li>
+    </ul>
+    <p>After the config file is written, optionally edit two prompt files to customize the AI's voice:</p>
+    <pre>open ~/.claude/skills/call-capture/references/extraction-prompt.md
+open ~/.claude/skills/mine-calls/references/hook-prompt.md</pre>
+    <p>Both files have a "Voice (CUSTOMIZE THIS)" section. The more specific you are about your voice, the better the hooks. Reference creators you sound like, banned words, hook patterns you favor.</p>
+  </div>
+
+  <h3>First Run</h3>
+  <p>After setup completes, run your first capture:</p>
+  <pre>/process-calls</pre>
+  <p>If you have a recent Zoom cloud recording, Claude will pull it, classify it, extract everything, and write to Supabase + Notion in about 30 seconds — all inside your Claude Code session. Open Notion to see it land.</p>
+  <p>Then run <code>/mine-calls</code> to generate content hooks from that call. And <code>/call-digest</code> at end of day to email yourself the rollup.</p>
+
+  <div class="callout">
+    <strong>Heavy users:</strong> if you batch-process 10+ calls at once you may briefly hit your Claude Pro/Max usage cap. Most coaches doing 1–2 calls/day never see this. If it happens, process in smaller batches or upgrade to Max.
+  </div>
+</div>
+
+<!-- ============ PAGE 6 — TROUBLESHOOTING + CTA ============ -->
+<div class="page">
+  <span class="tag outline">Page 6 · Troubleshooting · Next Step</span>
+  <h2>Common Issues</h2>
+  <div class="gold-rule"></div>
+
+  <h3>"No recordings found" when running /process-calls</h3>
+  <p>Three causes, in order of likelihood:</p>
+  <ul class="checklist">
+    <li><strong>Recording is local, not cloud</strong> — Zoom Pro+ needed; check Settings → Recording → Cloud Recording is on</li>
+    <li><strong>Recording is still processing</strong> — Zoom takes 5–30 min after a call ends to make the recording API-accessible. Run again in 15 min.</li>
+    <li><strong>Zoom MCP scope</strong> — the integration may not have permission to read recordings. Reconnect the MCP server.</li>
+  </ul>
+
+  <h3>"Config not found at ~/.lfg/call-pipeline.json"</h3>
+  <p>You skipped Step 4 or the file got deleted. Re-run <code>/lfg:setup-call-pipeline</code>.</p>
+
+  <h3>Notion writes silently fail (Supabase row created, no Notion page)</h3>
+  <p>Almost always a property name mismatch. The skills look up Notion columns by name — if you renamed <code>My Action Items</code> to <code>Actions</code> in your duplicated database, the write fails. Restore the original property name. (Refer to the Notion template spec in the repo.)</p>
+
+  <h3>Hooks don't sound like me</h3>
+  <p>Edit the Voice section of <code>~/.claude/skills/mine-calls/references/hook-prompt.md</code>. Be specific. Mention creators you sound like. Mention words you'd never use. Run <code>/mine-calls --all</code> to re-mine all calls with the updated prompt (confirm before — deletes old ideas).</p>
+
+  <h3>"You've reached your usage limit" mid-batch</h3>
+  <p>You hit your Claude Pro or Max usage cap. Two options: process calls in smaller batches (3–5 at a time), or upgrade to a higher tier. Most coaches doing 1–2 calls/day never see this on Pro.</p>
+
+  <h3>Updating to a new pipeline version</h3>
+  <p>Run <code>/lfg:update</code>. It re-downloads the latest skill code and prompts. Your config file and customized prompt edits are preserved (the installer only seeds files that don't exist locally).</p>
+
+  <div class="cta-box">
+    <h2>Want Me to Set It Up For You?</h2>
+    <p>The 4-step setup takes ~20 minutes if everything goes right. The version above is the manual system — you type <code>/process-calls</code> after each call. The fully-automated version (auto-fires on every new Zoom recording, daily digest emails itself at 5pm) is part of the 1:1 implementorship. We set up the cron + webhooks + voice tuning together over 30 days.</p>
+    <a href="https://www.skool.com/quantum100/about">Apply to Work With Dan 1:1 →</a>
+  </div>
+
+  <p class="small" style="text-align:center;margin-top:2em;">Questions? Find me in the LFG community — skool.com/lfg<br>
+  Course updates ship to <code>github.com/LifestyleFounder/lfg-claude-course</code></p>
+</div>
+
+</body>
+</html>
