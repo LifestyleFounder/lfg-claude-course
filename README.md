@@ -45,6 +45,19 @@ Plus gifts: 30 AI prompts, a skill builder, 5 agent workflows, 10 coaching busin
 | `/lfg:update` | Pull the latest course version (new lessons, skills, fixes) |
 | `/time-spent` | Gift skill — audit where your day actually goes (needs ActivityWatch) |
 
+## Advanced Module — The Call Pipeline (Premium)
+
+A three-skill pipeline that captures every Zoom call, extracts structured data, and emails you a daily rollup. Requires Supabase + Notion + Zoom Pro+. ~30-min setup.
+
+| Command | Description |
+|---------|-------------|
+| `/lfg:setup-call-pipeline` | 5-step interactive setup — Supabase schema, Notion template, MCP servers, API key, config file |
+| `/process-calls` | Pulls Zoom recordings → classifies → extracts → writes to Supabase + Notion |
+| `/mine-calls` | Generates content hooks (in your voice) from processed transcripts |
+| `/call-digest` | End-of-day rollup — Notion page + email |
+
+**[Setup Guide PDF →](https://github.com/LifestyleFounder/lfg-claude-course/blob/main/setup/call-pipeline/PDF-LEAD-MAGNET.html)** (4 pages of setup, troubleshooting, and architecture).
+
 ## Updating
 
 When new lessons or skills ship, type `/lfg:update` inside Claude Code (or re-run the install command above). The installer is safe to re-run — it overwrites with the latest from main and preserves any customizations you've made to `~/.claude/skills/time-spent/categories.json`.

@@ -1,0 +1,10 @@
+{
+  "_comment": "Fallback example file. The skill normally reads from ~/.lfg/call-pipeline.json (created by /lfg:setup-call-pipeline). Edit those values, not these.",
+  "calendar_keywords": {
+    "sales": ["sales call", "discovery call", "intro call", "strategy call", "trial call"],
+    "coaching": ["coaching", "1:1", "private session", "check-in", "one-on-one"],
+    "group": ["group call", "office hours", "q&a", "implementation call"],
+    "workshop": ["workshop", "masterclass", "training"]
+  },
+  "client_names": []
+}
