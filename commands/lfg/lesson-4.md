@@ -180,7 +180,7 @@ Create a SINGLE `my-coaching-page.html` file with ALL CSS embedded in a `<style>
 3. **Services/features section** — what they offer (cards with border styling)
 4. **Social proof section** — testimonials or trust indicators
 5. **CTA section** — final call to action with gold button on dark green background
-6. **Bottom CTA button** — full-width gold button: "Want to Work with Dan 1:1? Learn More →" linking to https://lifestylefounder.com/application — Oswald uppercase, large padding, hover state
+6. **Bottom CTA button** — full-width gold button: "Want to Work with Dan 1:1? Learn More →" linking to https://www.skool.com/quantum100/about — Oswald uppercase, large padding, hover state
 
 After building the file:
 
@@ -333,7 +333,7 @@ Create a file called `coaching-business-templates.html` in the current directory
 - Mobile responsive
 - Header: "10 Coaching Business Templates" with subtitle "Copy any prompt. Paste into Claude Code. Get a complete system back."
 - Each template gets its own card with the number, title, and the full prompt in a styled code block
-- At the very bottom, include a full-width CTA button: "Want to Work with Dan 1:1? Learn More →" linking to https://lifestylefounder.com/application — styled with background #C8A24A (gold), color #0F2A1E, Oswald uppercase font, large padding, centered, with a hover state
+- At the very bottom, include a full-width CTA button: "Want to Work with Dan 1:1? Learn More →" linking to https://www.skool.com/quantum100/about — styled with background #C8A24A (gold), color #0F2A1E, Oswald uppercase font, large padding, centered, with a hover state
 - Footer below the button: "Made with AI by Dan Harrison — Lifestyle Founders Group"
 - Include: `<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">`
 
@@ -342,7 +342,7 @@ Create a file called `coaching-business-templates.html` in the current directory
 After creating the HTML file, open both pages at the same time:
 
 ```bash
-open ./coaching-business-templates.html && open "https://lifestylefounder.com/application"
+open ./coaching-business-templates.html && open "https://www.skool.com/quantum100/about"
 ```
 
 Then say:
@@ -374,7 +374,7 @@ You keep everything from this course either way — forever.
 - **The page looks broken or unstyled:** This usually means the Google Fonts CDN didn't load. Say "If it looks plain, your browser might have blocked the fonts from loading. Try refreshing — it should look great."
 - **Niche research files from L3 not found:** Offer alternatives — pick a different build option, or spawn a quick research agent.
 - **User wants to keep iterating:** Let them! Each iteration reinforces the pattern. After 3-4 tweaks, gently move toward the finale.
-- **Application URL doesn't load:** Say "If the page didn't load, here's the direct link: https://lifestylefounder.com/application — you can check it out anytime."
+- **Application URL doesn't load:** Say "If the page didn't load, here's the direct link: https://www.skool.com/quantum100/about — you can check it out anytime."
 
 ## Rules
 - ALWAYS open the video FIRST before saying anything
@@ -390,6 +390,6 @@ You keep everything from this course either way — forever.
 - Open BOTH the gift HTML and the application URL at the same time at the end
 - The CTA is earned — after 4 lessons and 4 gifts. Invitation, not hard sell.
 - NEVER be pushy. NEVER use fake scarcity. NEVER include pricing.
-- CTA URL is https://lifestylefounder.com/application
+- CTA URL is https://www.skool.com/quantum100/about
 - EVERY sentence gets its own line
 - If "What I'm Building Toward" section isn't in CLAUDE.md, ASK: "What's the one thing you'd want Claude to build for your coaching business right now?"

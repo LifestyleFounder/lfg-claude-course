@@ -59,4 +59,4 @@ rm -rf ~/.claude/commands/lfg ~/.claude/skills/time-spent ~/.lfg
 
 Built by Dan Harrison — 3x Skool Games winner, founder of [Lifestyle Founders Group](https://skool.com/lfg).
 
-Want to go deeper? [Apply here](https://lifestylefounder.com/application).
+Want to go deeper? [Apply here](https://www.skool.com/quantum100/about).

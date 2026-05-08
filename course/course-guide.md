@@ -148,7 +148,7 @@ Course complete achievement card. Connects the dots: CLAUDE.md + Skills + Agents
 
 **Gift:** Creates `~/.lfg/gifts/coaching-business-templates.md` — 10 mega-prompts.
 
-**CTA:** "Work with us: https://lifestylefounder.com/application" — earned, not pushed. Anti-bro-marketing.
+**CTA:** "Work with us: https://www.skool.com/quantum100/about" — earned, not pushed. Anti-bro-marketing.
 
 **Graduation card** signed "— Dan"
 
