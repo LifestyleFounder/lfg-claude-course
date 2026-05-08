@@ -1,10 +1,10 @@
 {
-  "_comment": "Fallback example file. The skill normally reads from ~/.lfg/call-pipeline.json (created by /lfg:setup-call-pipeline). Edit those values, not these.",
+  "_comment": "Fallback example file. The skill normally reads from ~/.lfg/call-pipeline.json (created by /lfg:setup-call-pipeline). Edit those values, not these. Keys must match the capitalized Type values in your Notion Calls DB.",
   "calendar_keywords": {
-    "sales": ["sales call", "discovery call", "intro call", "strategy call", "trial call"],
-    "coaching": ["coaching", "1:1", "private session", "check-in", "one-on-one"],
-    "group": ["group call", "office hours", "q&a", "implementation call"],
-    "workshop": ["workshop", "masterclass", "training"]
+    "Sales": ["sales call", "discovery call", "intro call", "strategy call", "trial call"],
+    "Coaching": ["coaching", "1:1", "private session", "check-in", "one-on-one"],
+    "Group": ["group call", "office hours", "q&a", "implementation call"],
+    "Workshop": ["workshop", "masterclass", "training"]
   },
   "client_names": []
 }

@@ -24,14 +24,16 @@ def classify_from_calendar(
     """
     haystack = f"{event_title}\n{event_description}".lower()
 
-    # Client name -> coaching
+    # Client name -> Coaching
     for name in config.get("client_names", []):
         if name.lower() in haystack:
-            return {"type": "coaching", "confidence": 0.95, "source": "calendar"}
+            return {"type": "Coaching", "confidence": 0.95, "source": "calendar"}
 
-    # Keyword map -> type
+    # Keyword map -> type. Keys must be capitalized: Sales / Coaching / Workshop / Group / Discovery / Other
     keywords = config.get("calendar_keywords", {})
     for call_type, words in keywords.items():
+        if call_type.startswith("_"):
+            continue  # skip _comment keys
         for word in sorted(words, key=len, reverse=True):
             if word.lower() in haystack:
                 return {"type": call_type, "confidence": 0.95, "source": "calendar"}

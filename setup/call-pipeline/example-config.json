@@ -1,5 +1,5 @@
 {
-  "_comment": "Copy this file to ~/.lfg/call-pipeline.json and fill in your values. The three call skills (/process-calls, /mine-calls, /call-digest) all read from this single config.",
+  "_comment": "Copy this file to ~/.lfg/call-pipeline.json and fill in your values. The three call skills (/process-calls, /mine-calls, /call-digest) all read from this single config. Runs entirely inside your Claude Code Pro/Max plan — no Anthropic API key needed.",
   "user_email": "you@example.com",
   "user_name": "Your Name",
   "user_voice_description": "Describe how you want hooks and content ideas written. Examples: 'Direct, contrarian, no fluff. Sounds like Frank Kern meets a stand-up comic.' or 'Warm, supportive, lots of personal stories.' or 'Tactical, numbers-first, no fluff — sounds like Alex Hormozi.' This is what shapes the AI-generated content ideas.",
@@ -7,11 +7,11 @@
     "Comment: list your active 1:1 clients here so the keyword classifier can identify their calls. Example: 'Sarah Johnson', 'Michael Chen'."
   ],
   "calendar_keywords": {
-    "_comment": "Words/phrases that appear in your Google Calendar event titles or descriptions. The classifier matches these to detect call type. Edit freely.",
-    "sales": ["sales call", "discovery call", "intro call", "strategy call", "trial call"],
-    "coaching": ["coaching", "1:1", "private session", "check-in", "one-on-one"],
-    "group": ["group call", "office hours", "q&a", "implementation call"],
-    "workshop": ["workshop", "masterclass", "training"]
+    "_comment": "Words/phrases that appear in your Google Calendar event titles or descriptions. The classifier matches these to detect call type. Keys must match the capitalized Type values in your Notion Calls DB.",
+    "Sales": ["sales call", "discovery call", "intro call", "strategy call", "trial call"],
+    "Coaching": ["coaching", "1:1", "private session", "check-in", "one-on-one"],
+    "Group": ["group call", "office hours", "q&a", "implementation call"],
+    "Workshop": ["workshop", "masterclass", "training"]
   },
   "notion": {
     "_comment": "After duplicating the LFG Notion template (see setup PDF), open each database, click the ⋯ menu → Copy link to view → paste below. The data_source_id is the part after the last slash and before the ?v= query string. The setup command will help you find these.",

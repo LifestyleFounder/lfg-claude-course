@@ -13,13 +13,18 @@ CREATE TABLE IF NOT EXISTS calls (
   call_date                   TIMESTAMPTZ NOT NULL,
   duration_minutes            INTEGER,
   topic                       TEXT,
-  call_type                   TEXT NOT NULL CHECK (call_type IN ('coaching', 'sales', 'workshop', 'group', 'unknown')),
-  classification_source       TEXT CHECK (classification_source IN ('calendar', 'ai', 'manual')),
+  client_name                 TEXT,
+  call_type                   TEXT NOT NULL CHECK (call_type IN ('Sales', 'Coaching', 'Workshop', 'Group', 'Discovery', 'Other')),
+  classification_source       TEXT CHECK (classification_source IN ('calendar', 'transcript', 'manual')),
   classification_confidence   NUMERIC,
   attendees                   JSONB NOT NULL DEFAULT '[]'::jsonb,
-  transcript_url              TEXT,
+  recording_url               TEXT,
   transcript_text             TEXT,
   summary                     TEXT,
+  key_quotes                  JSONB NOT NULL DEFAULT '[]'::jsonb,
+  status                      TEXT NOT NULL DEFAULT 'Processed' CHECK (status IN ('Processed', 'Mined', 'Digested', 'Failed')),
+  mined                       BOOLEAN NOT NULL DEFAULT false,
+  digested                    BOOLEAN NOT NULL DEFAULT false,
   notion_page_id              TEXT,
   created_at                  TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE(zoom_meeting_id)
@@ -27,6 +32,9 @@ CREATE TABLE IF NOT EXISTS calls (
 
 CREATE INDEX IF NOT EXISTS idx_calls_call_date ON calls(call_date DESC);
 CREATE INDEX IF NOT EXISTS idx_calls_call_type ON calls(call_type);
+CREATE INDEX IF NOT EXISTS idx_calls_status ON calls(status);
+CREATE INDEX IF NOT EXISTS idx_calls_mined ON calls(mined);
+CREATE INDEX IF NOT EXISTS idx_calls_digested ON calls(digested);
 
 -- ============================================================
 -- 2. call_action_items — extracted commitments from each call
@@ -36,7 +44,8 @@ CREATE TABLE IF NOT EXISTS call_action_items (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   call_id         UUID NOT NULL REFERENCES calls(id) ON DELETE CASCADE,
   task            TEXT NOT NULL,
-  owner           TEXT,
+  owner_type      TEXT NOT NULL CHECK (owner_type IN ('mine', 'theirs')),
+  owner_name      TEXT,
   deadline        TEXT,
   source_quote    TEXT,
   done            BOOLEAN NOT NULL DEFAULT false,
@@ -44,7 +53,7 @@ CREATE TABLE IF NOT EXISTS call_action_items (
 );
 
 CREATE INDEX IF NOT EXISTS idx_action_items_call_id ON call_action_items(call_id);
-CREATE INDEX IF NOT EXISTS idx_action_items_owner ON call_action_items(owner);
+CREATE INDEX IF NOT EXISTS idx_action_items_owner_type ON call_action_items(owner_type);
 
 -- ============================================================
 -- 3. call_content_ideas — content hooks mined from transcripts

@@ -71,13 +71,18 @@ chmod +x ~/.claude/skills/time-spent/audit.py
 dl_seed "skills/time-spent/categories.json" "$HOME/.claude/skills/time-spent/categories.json"
 
 # Download advanced module — call pipeline (call-capture + mine-calls + call-digest)
+# Note: extraction + hook mining now run in-context (no separate Anthropic API key)
 echo "  Downloading call-pipeline skills..."
-for f in SKILL.md scripts/__init__.py scripts/parse_vtt.py scripts/classify_keywords.py scripts/extract.py references/extraction-prompt.md; do
+for f in SKILL.md scripts/__init__.py scripts/parse_vtt.py scripts/classify_keywords.py references/extraction-prompt.md; do
   dl "skills/call-capture/${f}" "$HOME/.claude/skills/call-capture/${f}"
 done
 dl_seed "skills/call-capture/config/call-types.json" "$HOME/.claude/skills/call-capture/config/call-types.json"
 
-for f in SKILL.md scripts/__init__.py scripts/mine_call.py references/hook-prompt.md; do
+# Clean up obsolete API-dependent scripts from prior installs (no-op on fresh installs)
+rm -f "$HOME/.claude/skills/call-capture/scripts/extract.py" 2>/dev/null
+rm -f "$HOME/.claude/skills/mine-calls/scripts/mine_call.py" 2>/dev/null
+
+for f in SKILL.md scripts/__init__.py references/hook-prompt.md; do
   dl "skills/mine-calls/${f}" "$HOME/.claude/skills/mine-calls/${f}"
 done
 

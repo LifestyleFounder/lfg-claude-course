@@ -7,13 +7,13 @@ description: Mine call transcripts (already in Supabase) for content ideas — p
 
 Reads processed call transcripts from Supabase and produces **pre-written hooks** + format + angle + source reference, ready to drop into a Reel script or carousel without re-watching the call.
 
-Uses Claude **Sonnet 4.5** (better hook quality than Haiku for voice-driven copy).
+Runs entirely inside your Claude Code session — no Anthropic API key required, no per-call billing. You (Claude) do the hook mining yourself in-context using the prompt at `references/hook-prompt.md` as guidance.
 
 ## When to use
 
 - The user runs `/mine-calls`
 - The user says "mine my calls", "get content ideas from today's calls", "what's in last week's calls"
-- After `/process-calls` completes and the user wants ideas (not just summaries + actions)
+- After `/process-calls` completes and the user wants polished, voice-tuned hooks (not just the seed ideas already in `call_content_ideas`)
 
 ## Prerequisite: config + processed calls
 
@@ -23,15 +23,14 @@ Requires `~/.lfg/call-pipeline.json` (run `/lfg:setup-call-pipeline` first) and 
 
 ### Step 1: Decide which calls to mine
 
-Default = calls that have a transcript but no content ideas yet:
+Default = calls that haven't been mined yet (`mined = false`):
 
 ```sql
-SELECT c.id, c.topic, c.call_type, c.call_date, c.duration_minutes, c.transcript_text
+SELECT c.id, c.topic, c.call_type, c.call_date, c.duration_minutes, c.transcript_text, c.notion_page_id
 FROM calls c
-LEFT JOIN call_content_ideas ci ON ci.call_id = c.id
-WHERE c.transcript_text IS NOT NULL
+WHERE c.mined = false
+  AND c.transcript_text IS NOT NULL
   AND c.transcript_text != ''
-  AND ci.id IS NULL
 ORDER BY c.call_date DESC;
 ```
 
@@ -39,27 +38,31 @@ If `$ARGUMENTS` contains:
 - A call ID (uuid) → only that call
 - `--all` → re-mine every call (delete existing ideas first if user wants fresh ones — confirm before)
 - `--since 2026-05-01` → only calls on/after that date
-- `--type coaching` → only coaching calls
+- `--type Coaching` → only Coaching calls (capitalized — match the schema)
 
-### Step 2: For each call, run the hook miner
+### Step 2: For each call, mine the hooks (you do this in-context)
 
-```bash
-python3 -c "
-import json, sys
-from pathlib import Path
-sys.path.insert(0, str(Path.home() / '.claude/skills/mine-calls'))
-from scripts.mine_call import mine_call
-transcript = sys.stdin.read()
-result = mine_call('<call_type>', transcript)
-print(json.dumps(result))
-"
+Read `~/.claude/skills/mine-calls/references/hook-prompt.md` for the complete mining guidance and your personal voice description. Then read the full transcript and produce up to 5 polished content hooks per call.
+
+You are doing the mining yourself in this Claude Code session — there is no API call, no Python script, no separate billing.
+
+The output for each call must be a JSON object:
+
+```json
+{
+  "ideas": [
+    {
+      "format": "reel | carousel | email | workshop_angle",
+      "hook": "the opening line — your voice, under 12 words, scroll-stopping",
+      "angle": "1-sentence why-it-works note for future-you",
+      "source_quote": "verbatim transcript line that triggered this idea",
+      "timestamp_seconds": 0
+    }
+  ]
+}
 ```
 
-Pipe the transcript text to stdin. Returns `{"ideas": [...]}`.
-
-`ANTHROPIC_API_KEY` must be set in the environment (set during `/lfg:setup-call-pipeline`).
-
-If the transcript is very long (> ~30k tokens), the call will still work but cost more. That's fine for this skill — quality matters here.
+If nothing crosses the quality bar (the prompt enforces a quality bar — don't lower it), return `{"ideas": []}`.
 
 ### Step 3: Write ideas to Supabase
 
@@ -72,7 +75,15 @@ VALUES ($1, $2, $3, $4, $5, $6, false);
 
 Use `mcp__supabase__execute_sql`. Cap at 5 ideas per call (the prompt enforces this but defensive coding).
 
-### Step 4: Render ideas as Notion blocks in the page BODY (not in the property column)
+After all ideas are written for a call, mark the call as mined and update its status:
+
+```sql
+UPDATE calls
+SET mined = true, status = 'Mined'
+WHERE id = '<call_id>';
+```
+
+### Step 4: Render ideas as Notion blocks in the page BODY
 
 The `Content Ideas` rich_text property on the row should hold ONLY a short summary like `"5 ideas — see page ↓"`. The full formatted ideas go into the page body as proper Notion blocks so the formatting actually renders (real bold, real headings, real spacing — not raw markdown text).
 
@@ -89,40 +100,41 @@ The `Content Ideas` rich_text property on the row should hold ONLY a short summa
 
 Timestamp format: under 1 hour use `MM:SS` (e.g. `14:23`), over 1 hour use `H:MM:SS` (e.g. `1:22:18`).
 
-After appending body blocks, update the row's `Content Ideas` property to a short summary — e.g. `"5 ideas — see page ↓"` — so the database column view stays clean.
+After appending body blocks, update the row's properties:
+- `Content Ideas` rich_text → short summary like `"5 ideas — see page ↓"`
+- `Status` select → `Mined`
+- `Mined` checkbox → checked
 
 ### Step 5: Report
 
 ```
 ✅ Mined <N> calls — <total_ideas> ideas total
-   - [<type>] <topic>: <idea_count> ideas → <notion_url>
+   - [<Type>] <topic>: <idea_count> ideas → <notion_url>
    - ...
 ```
 
-If a call had 0 ideas worth surfacing (the prompt enforces a quality bar), report:
+If a call had 0 ideas worth surfacing (the prompt enforces a quality bar), still mark it as mined (so it doesn't keep appearing in the unmined list) and report:
 ```
-   - [<type>] <topic>: no ideas crossed the quality bar (transcript may be tactical/admin)
+   - [<Type>] <topic>: no ideas crossed the quality bar (transcript may be tactical/admin)
 ```
 
 ## Arguments
 
-- `/mine-calls` — default, mines all unmined calls
+- `/mine-calls` — default, mines all unmined calls (`mined = false`)
 - `/mine-calls <call-uuid>` — mine just one call
 - `/mine-calls --since 2026-05-01` — only calls on/after that date
-- `/mine-calls --type coaching` — filter by call type
-- `/mine-calls --all` — re-mine even calls that already have ideas (confirms first)
+- `/mine-calls --type Coaching` — filter by call type (Sales / Coaching / Workshop / Group / Discovery / Other)
+- `/mine-calls --all` — re-mine even calls already mined (confirms first, then deletes existing ideas before re-mining)
 
 ## Error handling
 
 - **No unmined calls**: "All processed calls have been mined. Pass --all to re-mine."
-- **Anthropic API failure**: log error, skip the call, continue with next.
 - **Notion update failure**: ideas still go to Supabase. Surface: "Supabase saved, Notion sync failed for: <topic>"
-- **Empty transcript**: skip silently.
+- **Empty transcript**: skip silently (mark as mined so it doesn't recur).
 - **Config file missing**: print "Run /lfg:setup-call-pipeline first." Abort.
 
 ## Resources
 
 - `references/hook-prompt.md` — the carefully-crafted hook prompt. **Edit the Voice section** to make hooks sound like you.
-- `scripts/mine_call.py` — Sonnet 4.5 caller, returns structured ideas
 - Reads: Supabase `calls` + `call_content_ideas` tables
-- Writes: Supabase `call_content_ideas` + Notion `Calls` DB Content Ideas column
+- Writes: Supabase `call_content_ideas` + `calls.mined` + `calls.status` + Notion `Calls` DB Content Ideas column + page body blocks

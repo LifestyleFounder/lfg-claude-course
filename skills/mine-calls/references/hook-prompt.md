@@ -1,8 +1,8 @@
 # Hook Mining Prompt
 
-> Edit the **Voice section** below to tune hook generation for your business. The script `mine_call.py` reads this file at runtime — your edits take effect on the next run.
+> Edit the **Voice section** below to tune hook generation for your business. The `mine-calls` skill reads this file as guidance when running `/mine-calls` — your edits take effect immediately, no restart needed.
 
-You're mining a coaching/sales/workshop transcript for content ideas worth turning into a Reel, carousel, email, or workshop angle.
+You're mining a coaching/sales/workshop/group transcript for content ideas worth turning into a Reel, carousel, email, or workshop angle.
 
 ## Voice (CUSTOMIZE THIS)
 
