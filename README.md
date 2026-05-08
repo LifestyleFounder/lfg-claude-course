@@ -4,6 +4,8 @@ A free interactive Claude Code course for coaches and consultants by [Dan Harris
 
 4 lessons. ~30 minutes. Build a full AI system for your coaching business.
 
+**New here?** [Start with the welcome page on Skool →](https://www.skool.com/claudeforcoaches/classroom/dea59a65?md=32c85a1be0e84ebcaee669cc4d0c3529) (no signup required to view)
+
 ## Install
 
 Paste this into your terminal:

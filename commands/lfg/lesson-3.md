@@ -32,7 +32,7 @@ Read their CLAUDE.md before the demo. Check the current directory first, then tr
 Open the video lesson:
 
 ```bash
-open "https://www.skool.com/lfg/classroom/f35d1637?md=be4d95b1e0254c0b9e61c74517f776fc"
+open "https://www.skool.com/claudeforcoaches/classroom/dea59a65?md=7bfd311e612d48bf9e5070d8ffdfbeef"
 ```
 
 ## Introduction (say this AFTER the video opens)

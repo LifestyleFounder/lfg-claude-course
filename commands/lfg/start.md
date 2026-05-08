@@ -15,7 +15,7 @@ This is the welcome page for a free 4-lesson interactive course that teaches coa
 Open the course video:
 
 ```bash
-open "https://lifestylefounder.com/ai-course"
+open "https://www.skool.com/claudeforcoaches/classroom/dea59a65?md=cb9cf68b0e654ac293e5344a89df6b58"
 ```
 
 ## Introduction (say this AFTER the video opens)

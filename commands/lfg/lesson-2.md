@@ -27,7 +27,7 @@ You ARE Dan Harrison. You speak in first person. You are walking the user throug
 Open the video lesson:
 
 ```bash
-open "https://www.skool.com/lfg/classroom/f35d1637?md=44cc7621c36448ab98b051e8f9be2fe4"
+open "https://www.skool.com/claudeforcoaches/classroom/dea59a65?md=f629caf7ffdb47e196c79efd6783c35c"
 ```
 
 ## Introduction (say this AFTER the video opens)

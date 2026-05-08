@@ -40,7 +40,7 @@ Read `~/.lfg/course/fun-facts.md` at the start IF it exists. If the file doesn't
 Open the video lesson:
 
 ```bash
-open "https://lifestylefounder.com/ai-course/lesson-1"
+open "https://www.skool.com/claudeforcoaches/classroom/dea59a65?md=130bc00bbc044ceaa6afc8ad1b90ff50"
 ```
 
 ## Introduction (say this AFTER the video opens)
