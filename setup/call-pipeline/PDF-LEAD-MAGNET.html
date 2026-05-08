@@ -150,7 +150,7 @@
   }
   .checklist li:last-child { border-bottom: none; }
   .checklist li:before {
-    content: "▢";
+    content: "\2610";
     color: var(--gold);
     font-size: 14pt;
     position: absolute;
@@ -205,6 +205,44 @@
     padding: 0.7em 1.6em;
     border-radius: 3px;
     font-size: 11pt;
+  }
+  .cta-box .tier {
+    text-align: left;
+    padding: 1.1em 0;
+    border-top: 1px solid rgba(200, 162, 74, 0.3);
+  }
+  .cta-box .tier:first-of-type {
+    border-top: 1px solid rgba(200, 162, 74, 0.5);
+    margin-top: 1em;
+  }
+  .cta-box .tier-label {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    font-family: 'Oswald', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-bottom: 0.5em;
+  }
+  .cta-box .tier h3 {
+    color: var(--cream);
+    font-size: 13pt;
+    margin: 0.2em 0 0.4em 0;
+    letter-spacing: 0.04em;
+  }
+  .cta-box .tier p {
+    color: var(--cream);
+    font-size: 10pt;
+    line-height: 1.5;
+    margin: 0 0 0.8em 0;
+  }
+  .cta-box .tier a {
+    font-size: 9.5pt;
+    padding: 0.55em 1.3em;
   }
 
   /* ============== COVER PAGE ============== */
@@ -293,7 +331,7 @@
   <div>
     <div style="margin-bottom:1.5em;">
       <span class="tag" style="background:var(--gold);color:var(--forest);">Setup Guide · 4 Steps · ~20 Minutes</span>
-      <span class="tag" style="background:transparent;color:var(--gold);border:1.5px solid var(--gold);margin-left:0.5em;">No API Key · Runs On Your Max Plan</span>
+      <span class="tag" style="background:transparent;color:var(--gold);border:1.5px solid var(--gold);margin-left:0.5em;">Runs On Your Claude Max Plan</span>
     </div>
     <div class="footer">
       Dan Harrison · 3× Skool Games Winner<br>
@@ -307,7 +345,7 @@
   <span class="tag outline">Page 2 · Outcome</span>
   <h2>What You're Installing</h2>
   <div class="gold-rule"></div>
-  <p>The Call Pipeline is a three-skill system that runs inside Claude Code and turns every Zoom recording into structured, searchable, actionable data — without you ever touching a transcript, and without paying a single extra penny in API costs.</p>
+  <p>The Call Pipeline is a three-skill system that runs inside Claude Code and turns every Zoom recording into structured, searchable, actionable data — without you ever touching a transcript, and without paying anything beyond your existing Claude Max subscription.</p>
 
   <h3>The Three Commands</h3>
 
@@ -343,7 +381,7 @@
     </tr>
     <tr>
       <td><strong>Claude Code</strong></td>
-      <td>Does the classification, extraction, and hook mining inside your live Claude Code session. Uses your existing Pro or Max subscription — no separate API billing, no per-call costs.</td>
+      <td>Does the classification, extraction, and hook mining inside your live Claude Code session. Uses your existing Claude Max subscription — no separate billing, no per-call costs.</td>
     </tr>
   </table>
 
@@ -367,7 +405,7 @@
   </ul>
 
   <div class="callout">
-    <strong>Why no Anthropic API key?</strong> Earlier versions of this pipeline called the Anthropic API directly with a separate key. We've simplified it: every command now runs inside your Claude Code session via MCP, so the work is covered by your existing Pro/Max subscription. One less account to set up. No surprise bills.
+    <strong>Runs entirely on your Claude Max plan.</strong> Every command runs inside your existing Claude Code session via MCP. No separate accounts, no per-call billing, no surprise charges. Your Max subscription is the only Claude cost — same one you're already paying for.
   </div>
 
   <h3>The Free Course</h3>
@@ -415,7 +453,12 @@
     <pre style="background:var(--forest);color:var(--cream);font-size:10pt;">https://www.notion.so/35a237e12a2c8196bd11e472a353b1ae</pre>
     <p>In the top-right of the page, click <strong>Duplicate</strong> → choose your workspace.</p>
     <p>You now own a copy with two databases pre-built: <code>Calls</code> and <code>Daily Digests</code>. <strong>Don't rename properties</strong> — the skills look up columns by name, so renames break the integration.</p>
-    <p>For each database, click ⋯ → <strong>Copy link to view</strong>. Paste both links back into Claude during the setup prompt. Claude will extract the data source IDs automatically.</p>
+    <p>For each database, click the <strong>three-dot menu</strong> &rarr; <strong>Copy link to view</strong>. Paste both links back into Claude during the setup prompt. Claude will extract the data source IDs automatically.</p>
+    <p style="margin-top:1em;font-size:9.5pt;color:var(--muted);">For reference, the original databases inside the template are:</p>
+    <ul class="checklist" style="margin-top:0.4em;">
+      <li><strong>Calls DB:</strong> <code style="font-size:9pt;">https://www.notion.so/b1d836d3fed5414898cdf31cf14203ec</code></li>
+      <li><strong>Daily Digests DB:</strong> <code style="font-size:9pt;">https://www.notion.so/20b793a8492b46b999bb46cbb086b296</code></li>
+    </ul>
   </div>
 
   <div class="step">
@@ -495,10 +538,30 @@ open ~/.claude/skills/mine-calls/references/hook-prompt.md</pre>
   <h3>Updating to a new pipeline version</h3>
   <p>Run <code>/lfg:update</code>. It re-downloads the latest skill code and prompts. Your config file and customized prompt edits are preserved (the installer only seeds files that don't exist locally).</p>
 
-  <div class="cta-box">
-    <h2>Want Me to Set It Up For You?</h2>
-    <p>The 4-step setup takes ~20 minutes if everything goes right. The version above is the manual system — you type <code>/process-calls</code> after each call. The fully-automated version (auto-fires on every new Zoom recording, daily digest emails itself at 5pm) is part of the 1:1 implementorship. We set up the cron + webhooks + voice tuning together over 30 days.</p>
-    <a href="https://www.skool.com/quantum100/about">Apply to Work With Dan 1:1 →</a>
+  <div class="cta-box" style="text-align:left;">
+    <h2 style="text-align:left;">Where to Next</h2>
+    <p style="text-align:left;">The Call Pipeline is one skill in a much bigger system. Pick the path that matches where you're at.</p>
+
+    <div class="tier">
+      <div class="tier-label">Free</div>
+      <h3>Lifestyle Founders Community</h3>
+      <p>11,500+ coaches and consultants. Free tools, daily content, community Q&amp;A, and a front-row seat to how I'm building all of this in public.</p>
+      <a href="https://www.skool.com/lfg/about">Join free &rarr;</a>
+    </div>
+
+    <div class="tier">
+      <div class="tier-label">$47</div>
+      <h3>Claude for Coaches</h3>
+      <p>The full course on building your AI workforce with Claude Code. Includes the full Call Pipeline, Morning Brief, content engines, and every prompt I use. Pay once, lifetime access.</p>
+      <a href="https://www.skool.com/claudeforcoaches/about">Get the course &rarr;</a>
+    </div>
+
+    <div class="tier">
+      <div class="tier-label">Apply</div>
+      <h3>Lifestyle Founder &mdash; 30-Day Implementorship</h3>
+      <p>I install your full AI operating system on your Mac in 30 days, train it on your business, and hand you the keys. For established coaches and consultants ready to go all in.</p>
+      <a href="https://www.skool.com/quantum100/about">Apply now &rarr;</a>
+    </div>
   </div>
 
   <p class="small" style="text-align:center;margin-top:2em;">Questions? Find me in the LFG community — skool.com/lfg<br>
