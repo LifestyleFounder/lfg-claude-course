@@ -23,12 +23,12 @@ Then open Claude Code and type `/lfg:start`.
 | 3. Your AI Content Team | 3 agents research your niche live on the internet | Competitor, pain point, and content gap reports |
 | 4. Build Something Real | Claude builds a web page for your business | A real page opened in your browser |
 
-Plus 4 gifts: 30 AI prompts, a skill builder, 5 agent workflows, and 10 coaching business templates.
+Plus gifts: 30 AI prompts, a skill builder, 5 agent workflows, 10 coaching business templates, and a Mac time-audit tool.
 
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/download) installed
-- That's it
+- That's it for the lessons. (The `/time-spent` gift skill also needs [ActivityWatch](https://activitywatch.net), free + local-only.)
 
 ## Course Commands
 
@@ -40,11 +40,17 @@ Plus 4 gifts: 30 AI prompts, a skill builder, 5 agent workflows, and 10 coaching
 | `/lfg:lesson-3` | Your AI content team |
 | `/lfg:lesson-4` | Build something real + finale |
 | `/lfg:skill-builder` | Gift — builds skills on demand |
+| `/lfg:update` | Pull the latest course version (new lessons, skills, fixes) |
+| `/time-spent` | Gift skill — audit where your day actually goes (needs ActivityWatch) |
+
+## Updating
+
+When new lessons or skills ship, type `/lfg:update` inside Claude Code (or re-run the install command above). The installer is safe to re-run — it overwrites with the latest from main and preserves any customizations you've made to `~/.claude/skills/time-spent/categories.json`.
 
 ## Uninstall
 
 ```bash
-rm -rf ~/.claude/commands/lfg ~/.lfg
+rm -rf ~/.claude/commands/lfg ~/.claude/skills/time-spent ~/.lfg
 ```
 
 ## About

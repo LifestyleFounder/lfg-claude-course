@@ -1,0 +1,131 @@
+{
+  "_comment": "Categories are evaluated in order. First match wins. Match types: app (exact app name), title_contains (case-insensitive substring of window title), url_contains (case-insensitive substring of URL — only used if browser extension installed). Add/edit freely.",
+  "categories": [
+    {
+      "name": "Forge Console / dev",
+      "icon": "🛠",
+      "rules": [
+        { "title_contains": "forge-console" },
+        { "title_contains": "Forge Console" },
+        { "title_contains": "Vercel" },
+        { "title_contains": "GitHub" },
+        { "title_contains": "Supabase" },
+        { "title_contains": "localhost" },
+        { "title_contains": "BackPak" },
+        { "title_contains": "GHL" },
+        { "app": "Code" },
+        { "app": "Cursor" },
+        { "app": "iTerm2" },
+        { "app": "Terminal" },
+        { "app": "Warp" }
+      ]
+    },
+    {
+      "name": "Claude / AI work",
+      "icon": "🤖",
+      "rules": [
+        { "title_contains": "Claude" },
+        { "title_contains": "claude.ai" },
+        { "title_contains": "Anthropic" },
+        { "app": "Claude" }
+      ]
+    },
+    {
+      "name": "Content / scripting",
+      "icon": "✍️",
+      "rules": [
+        { "title_contains": "Notion" },
+        { "title_contains": "Google Docs" },
+        { "title_contains": "Docs - " },
+        { "app": "Notion" },
+        { "app": "Notes" }
+      ]
+    },
+    {
+      "name": "Workshop / design (Canva)",
+      "icon": "🎨",
+      "rules": [
+        { "title_contains": "Canva" },
+        { "title_contains": "Workshop Template" },
+        { "title_contains": "Multi-design" },
+        { "title_contains": "Slides Creation" },
+        { "title_contains": "Slides - " },
+        { "app": "Figma" },
+        { "app": "Sketch" }
+      ]
+    },
+    {
+      "name": "Skool community",
+      "icon": "💬",
+      "rules": [
+        { "title_contains": "Lifestyle Founders" },
+        { "title_contains": "skool.com" },
+        { "title_contains": "quantum100" },
+        { "title_contains": "Skool" }
+      ]
+    },
+    {
+      "name": "Meta Ads",
+      "icon": "💰",
+      "rules": [
+        { "title_contains": "Ads Manager" },
+        { "title_contains": "Facebook Ads" },
+        { "title_contains": "Meta Business" },
+        { "title_contains": "Manus" }
+      ]
+    },
+    {
+      "name": "Email / admin",
+      "icon": "📧",
+      "rules": [
+        { "title_contains": "Inbox" },
+        { "title_contains": "Gmail" },
+        { "app": "Mail" },
+        { "title_contains": "Calendar" }
+      ]
+    },
+    {
+      "name": "Client comms / Telegram",
+      "icon": "📱",
+      "rules": [
+        { "app": "Telegram" },
+        { "app": "Slack" },
+        { "app": "Messages" },
+        { "app": "Sendblue" },
+        { "title_contains": "Sendblue" }
+      ]
+    },
+    {
+      "name": "Video / content prod",
+      "icon": "🎬",
+      "rules": [
+        { "app": "Final Cut Pro" },
+        { "app": "ScreenFlow" },
+        { "app": "OBS" },
+        { "app": "Ecamm Live" },
+        { "app": "Descript" },
+        { "app": "QuickTime Player" },
+        { "app": "Zoom" },
+        { "title_contains": "YouTube Studio" }
+      ]
+    },
+    {
+      "name": "Distraction / drift",
+      "icon": "🌐",
+      "rules": [
+        { "title_contains": "YouTube" },
+        { "title_contains": "Twitter" },
+        { "title_contains": " / X" },
+        { "title_contains": "Reddit" },
+        { "title_contains": "Instagram" },
+        { "title_contains": "TikTok" },
+        { "title_contains": "Hacker News" }
+      ]
+    },
+    {
+      "name": "Other",
+      "icon": "❓",
+      "catchall": true
+    }
+  ]
+}
