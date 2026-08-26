@@ -8,11 +8,21 @@ A free interactive Claude Code course for coaches and consultants by [Dan Harris
 
 ## Install
 
-Paste this into your terminal:
+**Mac / Linux** — paste this into your terminal:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/LifestyleFounder/lfg-claude-course/main/install.sh | bash
 ```
+
+**Windows** — paste this into PowerShell:
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+irm https://raw.githubusercontent.com/LifestyleFounder/lfg-claude-course/main/install.ps1 | iex
+```
+
+The TLS line is needed because Windows PowerShell 5.1 defaults to TLS 1.0, which GitHub
+refuses. Do not run the `install.sh` command on Windows — it will not work.
 
 Then open Claude Code and type `/lfg:start`.
 
